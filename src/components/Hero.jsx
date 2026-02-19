@@ -5,7 +5,7 @@ import { SlideIn, ScaleIn, BlurIn } from './Animations'
 import Logo from './Logo'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import maheshImg from '../assets/Profile1.png' // Updated to Profile1.png
-import './hero.css'  // Make sure this is the only hero CSS
+import './Hero.css'  // Make sure this is the only hero CSS
 
 const Hero = () => {
   return (
