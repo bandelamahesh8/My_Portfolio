@@ -1,0 +1,82 @@
+import './About.css'
+import profileImg from '../assets/profile.png'
+import Logo from './Logo'
+import { Reveal } from './Animations'
+import { EtheralShadow } from './ui/etheral-shadow'
+import LazyBackground from './LazyBackground'
+
+const About = () => {
+    return (
+        <section className="about-section">
+            <LazyBackground className="absolute inset-0 z-0">
+                <EtheralShadow
+                    color="rgba(50, 50, 50, 1)"
+                    animation={{ scale: 100, speed: 90 }}
+                    noise={{ opacity: 0.8, scale: 1.2 }}
+                    sizing="fill"
+                    className="absolute inset-0 z-0"
+                    style={{
+                        maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)'
+                    }}
+                />
+            </LazyBackground>
+            
+            <div className="about-container relative z-10">
+                <div className="about-content">
+                    <div className="about-left">
+                        <Reveal>
+                            <div className="about-image-wrapper">
+                                <img src={profileImg} alt="Bandela Mahesh" className="about-photo" />
+                                <div className="about-image-glow"></div>
+                            </div>
+                        </Reveal>
+                    </div>
+                    
+                    <div className="about-right">
+                        <Reveal delay={0.2}>
+                            <div className="about-header">
+                                <Logo className="w-8 h-8 mb-4 ml-0" color="#ff3333" />
+                                <p className="eyebrow">BANDELA MAHESH</p>
+                                <h2 className="section-title">About</h2>
+                            </div>
+                        </Reveal>
+                        
+                        <div className="about-text">
+                        <Reveal delay={0.4}>
+                                <p>
+                                I’m <strong>Mahesh (Bandela Mahesh)</strong>, a <strong>Product Designer & Developer</strong> 
+                                building cinematic, high-performance web systems where advanced UI engineering, motion design, 
+                                and scalable backend architecture intersect.
+                                  </p>
+                          </Reveal>
+                          <Reveal delay={0.5}>
+                            <p>
+                            I design and build production-grade full-stack systems — turning complex design systems into 
+                            maintainable, secure, and performance-focused code that survives real-world scale.
+                            </p>
+                          </Reveal>
+
+                          <Reveal delay={0.6}>
+                            <p>
+                            My work spans AI-driven platforms, advanced authentication, real-time systems, subscription 
+                            products, and immersive motion- and 3D-led interfaces.
+                            </p>
+                          </Reveal>
+
+                          <Reveal delay={0.7}>
+                            <p>
+                            Currently pursuing B.Tech in Computer Science & Engineering at Lovely Professional University, 
+                            I focus on building systems that go beyond demos — intentional interfaces that perform under 
+                            real constraints.
+                            </p>
+                          </Reveal>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+)
+}
+
+export default About

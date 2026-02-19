@@ -1,0 +1,90 @@
+.ventures-hero-section {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Adjust height as needed */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    background: transparent;
+}
+
+.ventures-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.ventures-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2; /* Dim the background image to let ASMR background shine through */
+}
+
+/* Dark gradient overlay */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0%,
+        transparent 100%
+    );
+}
+
+.ventures-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center; /* Center align by default, can be left aligned if requested */
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+.eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.ventures-title {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+}
+
+.ventures-title .plus {
+    color: #FF4D4D; /* Use the accent color from the design */
+    vertical-align: super;
+    font-size: 3rem;
+    margin-left: 5px;
+}
+
+.ventures-subtext {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .ventures-title {
+        font-size: 3.5rem;
+    }
+    
+    .ventures-subtext {
+        font-size: 1rem;
+    }
+}

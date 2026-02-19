@@ -1,0 +1,91 @@
+.certificates-section {
+    padding: 120px 0;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.certificates-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.certificates-header {
+    margin-bottom: 60px;
+}
+
+.certificates-header .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.certificates-header .section-title {
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin: 0;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .certificates-section {
+        padding: 80px 0;
+    }
+    .certificates-header .section-title {
+        font-size: 48px;
+    }
+}
+
+.certificates-content-wrapper {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 80px 60px;
+    margin-top: 40px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: relative;
+}
+
+.view-all-certificates-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 99px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.view-all-certificates-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.view-all-certificates-btn svg {
+    transition: transform 0.4s ease;
+}
+
+.view-all-certificates-btn:hover svg {
+    transform: scale(1.1) rotate(-5deg);
+}

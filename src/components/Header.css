@@ -1,0 +1,232 @@
+.navbar {
+  position: fixed;
+  top: 22px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 94%;
+  max-width: 1640px;
+  height: 64px;
+  padding: 0 36px;
+  border-radius: 999px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* Translucent Glass Effect */
+  background: rgba(10, 10, 12, 0.05); /* Extremely low opacity */
+  
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+
+  /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  /* Phase 6: Nav Bar Final Restraint */
+  opacity: 0.85;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.navbar:hover {
+  opacity: 1;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* Subtle color spots */
+  background:
+    radial-gradient(80% 60% at 15% 10%, rgba(255, 100, 100, 0.08), transparent 60%),
+    radial-gradient(80% 60% at 85% 10%, rgba(100, 130, 255, 0.08), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.navbar::after {
+  content: "TEST"; /* Temporarily hidden/removed via opacity or similar if strictly not needed, but keeping structure for potential shine */
+  display: none; 
+}
+
+.nav-left {
+  z-index: 2;
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logo-link:hover .logo {
+  color: #ff5252;
+  transform: scale(1.05);
+  text-shadow: 0 0 12px rgba(255, 82, 82, 0.4);
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff5252;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(255, 82, 82, 0.6);
+}
+
+.logo-link:hover .logo::after {
+  width: 100%;
+}
+
+.plus {
+  color: #ff5252;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+}
+
+.nav-link {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ff3333;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+  opacity: 0;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: #ff3333;
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
+}
+
+.nav-link.active::after {
+  width: 100%;
+  opacity: 1;
+  background: #ff3333;
+}
+
+.cta {
+  z-index: 2;
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.1)
+    );
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 10px 30px rgba(0,0,0,0.6);
+
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  border-color: #171414;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 0 20px rgba(227, 205, 205, 0.5),
+    0 15px 35px rgba(0,0,0,0.7);
+}
+
+.cta:hover::before {
+  left: 150%;
+}
+
+.arrow {
+  opacity: 0.7;
+  transition: transform 0.35s ease;
+}
+
+.cta:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+.cta-wrapper {
+  text-decoration: none;
+  display: flex;
+}

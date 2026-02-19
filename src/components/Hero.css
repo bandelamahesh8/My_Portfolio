@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  color: white;
+}
+
+/* Top Spotlight Glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -270px;
+  left: 50%;
+  transform: translateX(-60%);
+  width: 80%;
+  height: 450px;
+  z-index: 1;
+  /* Layer 1: Glow */
+
+  /* ... (gradient styles) ... */
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(139, 0, 0, 0.12) 30%,
+      rgba(139, 0, 0, 0.18) 50%,
+      rgba(139, 0, 0, 0.12) 70%,
+      transparent 100%);
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 1;
+
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+/* Static Grid Lines */
+.hero::after {
+  content: none;
+}
+
+.hero-grid {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10vw;
+  /* Space on left */
+  width: 100%;
+  /* constrained width */
+  z-index: 2;
+  /* Layer 2: Grid */
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+
+  background-image: linear-gradient(
+  to right,
+  rgba(255, 255, 255, 0.025) 0.5px,
+  transparent 0.5px
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 70%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 70%,
+    transparent 100%
+  );
+
+
+  background-size: calc(100% / 7) 100%;
+  /* 7 columns within the 90vw container */
+
+}
+
+/* Alive Stars / Dynamic Rays */
+.hero-grid-rays {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10vw;
+  /* Aligned with grid */
+  width: 100%;
+  z-index: 2;
+  /* Layer 2: Rays */
+  pointer-events: none;
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+/* ... rays styles ... */
+.hero-grid-rays.falling {
+  /* Mask 2px wide (thinner) */
+  -webkit-mask-image: linear-gradient(to right, black 1px, transparent 1px);
+  mask-image: linear-gradient(to right, black 1px, transparent 1px);
+  -webkit-mask-size: calc(200% / 7) 100%;
+  mask-size: calc(200% / 7) 100%;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+
+  /* Shifted further right (+1px to keep center with smaller width) */
+  -webkit-mask-position: calc((100% / 7) + 67.5px) 0;
+  mask-position: calc((100% / 7) + 67.5px) 0;
+
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 5%,
+      /* Sharper head, less glow */
+      transparent 70%
+      /* Sharper tail fade */
+    );
+  background-size: 100% 400px;
+  background-repeat: no-repeat;
+  animation: starsFalling 3.5s linear infinite;
+}
+
+.hero-grid-rays.rising {
+  /* Mask 2px wide (thinner) */
+  -webkit-mask-image: linear-gradient(to right, black 1px, transparent 1px);
+  mask-image: linear-gradient(to right, black 1px, transparent 1px);
+  -webkit-mask-size: calc(200% / 7) 100%;
+  mask-size: calc(200% / 7) 100%;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+
+  /* Shifted further right (+1px to keep center with smaller width) */
+  -webkit-mask-position: 1px 0;
+  mask-position: 1px 0;
+
+  background: linear-gradient(to top,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 5%,
+      /* Sharper head, less glow */
+      transparent 70%
+      /* Sharper tail fade */
+    );
+  background-size: 100% 400px;
+  background-repeat: no-repeat;
+  animation: starsRising 3.5s linear infinite;
+}
+
+@keyframes starsFalling {
+  0% {
+    background-position: 0 -300px;
+  }
+
+  100% {
+    background-position: 0 120vh;
+  }
+}
+
+@keyframes starsRising {
+  0% {
+    background-position: 0 120vh;
+  }
+
+  100% {
+    background-position: 0 -300px;
+  }
+}
+
+/* Vignette */
+.hero-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Content */
+/* Phase 3: Grid Silence Zone */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  
+  margin-top: 180px; 
+  margin-left: 100px; 
+  padding: 2rem;
+  
+  /* Darken grid behind text for editorial calm */
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0)
+  );
+  border-radius: 8px; /* Subtle containment */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ... typography ... */
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6); /* ⬅️ stronger */
+  text-transform: uppercase;
+  transform: translateY(5em);
+  line-height: 1;          /* 🔑 REMOVE ASCENDER GAP */
+  margin: 0 0 0.25rem 0;   /* tighter, controlled */
+}
+
+.hero-title {
+  /* Container for the box layout */
+  display: inline-flex;
+  flex-direction: column;
+  width: min-content; /* Shrink to fit the widest child (Likely Mahesh) */
+  font-size: 0; /* Remove whitespace between rows */
+  line-height: 1;
+  
+  color: #ffffff;
+  margin-top: -0.15em;
+  padding: 0;
+  
+  will-change: transform;
+}
+
+/* Individual Rows */
+.title-row {
+  display: flex;
+  width: 100%;
+  line-height: 1;
+}
+
+/* Top Row: Left alignment (Bandela + Logo) */
+.top-row {
+  justify-content: flex-start; /* keep them together */
+  align-items: baseline; /* Align baselines roughly */
+  margin-bottom: 0; /* Remove negative margin to stop overlap */
+}
+
+/* Bandela Text Style */
+.bandela-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(4.6rem, 6.6vw, 5.6rem); /* User's manual increase maintained */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-right: 0.5rem; /* Balanced gap */
+  line-height: 0.9; /* Tighter line height for the text itself */
+  
+}
+
+/* Big "Mahesh" text - Phase 1: Authority Rebalance */
+.mahesh-big {
+  display: block;
+  font-size: clamp(4.5rem, 9vw, 7.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  margin-left: -0.05em; /* Optical alignment with Bandela */
+  text-align: left;
+  margin-top: -0.1em; /* Tighter relative gap, not fixed -50px */
+  white-space: nowrap; /* Prevent wrap */
+  /* Red becomes authority, not heat. 10/10 fix: 0.88 opacity */
+  color: rgba(139, 0, 0, 0.88);
+}
+
+/* Wrapper for Logo */
+.logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  /* No margin needed due to space-between */
+}
+
+/* Ensure the inner BlurIn div is inline */
+.logo-wrapper > div {
+  display: inline-block !important;
+}
+
+/* Logo Adjustment - Phase 2: Logo Subordination */
+.logo-sup {
+  display: inline-flex;
+  /* Shrink ~10-12% and lower it */
+  transform: scale(1.75) translateY(-6px);
+  transform-origin: left center;
+  /* 10/10 fix: discovered, not noticed */
+  opacity: 0.75;
+  margin-bottom: 0;
+}
+
+/* Phase 4: Desc Weight Rebalance */
+.desc {
+  font-size: 1.05rem; /* Reduced from 1.125rem */
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55); /* Reduced opacity from 0.6 */
+  max-width: 600px;
+  /* Increased from 440px */
+  margin-bottom: 2.5rem;
+  
+  /* Make description whisper */
+  font-weight: 400;
+}
+
+/* Phase 5: Button De-emphasis */
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  
+  /* Push down and fade slightly */
+  margin-top: 2.8rem;
+  opacity: 0.9;
+  align-items: center;
+}
+
+/* ... buttons ... */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  text-decoration: none;
+  
+  /* Micro-luxury blur */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.btn svg {
+  margin-right: 10px;
+}
+
+.btn.primary {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn.primary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+/* Hero Image Styles */
+.hero-right {
+  position: absolute;
+  right: 7%;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+}
+
+.hero-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  /* Facde effect: Bottom, Left, Right */
+  box-shadow: inset 0 -60px 40px -10px #000,
+    inset 40px 0 40px -20px #000,
+    inset -40px 0 40px -20px #000;
+}
+
+.hero-photo {
+  height: 90vh;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 30px rgba(219, 158, 158, 0.2));
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+  z-index: 6;
+}
+
+.image-glow {
+  position: absolute;
+  bottom: 20%;
+  right: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 51, 51, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 4;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .hero-photo {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 3rem;
+    padding-top: 100px;
+  }
+
+  .hero-content {
+    align-items: center;
+    margin-left: 0; /* Reset desktop shift */
+    margin-top: 0; /* Let padding handle spacing */
+    width: 100%;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.25rem; /* Fallback */
+    width: 100%; /* Allow full width */
+    align-items: center; /* Center align on mobile if needed */
+  }
+
+  .bandela-text {
+    font-size: 3rem; /* Smaller on mobile */
+  }
+
+  .mahesh-big {
+    font-size: 3.5rem; /* Smaller on mobile */
+    margin-top: 0;
+  }
+  
+  .top-row {
+    justify-content: center; /* Center align visually */
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

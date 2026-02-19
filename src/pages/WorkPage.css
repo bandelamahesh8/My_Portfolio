@@ -1,0 +1,340 @@
+.work-page {
+    background: transparent;
+    color: #fff;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.case-studies-section {
+    padding: 120px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.case-studies-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.case-studies-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.all-case-studies {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+}
+
+.template-badge {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* Contact Section on Work Page */
+.work-contact-section {
+    padding: 160px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.work-contact-container {
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.work-contact-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 120px;
+}
+
+.work-contact-text-side {
+    flex: 1;
+}
+
+.contact-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.5;
+    letter-spacing: 0.2em;
+    margin-bottom: 32px;
+    color: #ffffff;
+}
+
+.work-contact-title {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 48px 0;
+    color: #ffffff;
+}
+
+.work-contact-title .plus {
+    color: #ff3333;
+    font-size: 0.6em;
+    vertical-align: super;
+}
+
+.work-contact-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 40px;
+    max-width: 440px;
+}
+
+.work-collab-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.work-contact-form-side {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.work-form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.4;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.work-form-input, 
+.work-form-textarea {
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 12px 0;
+    color: #fff !important;
+    font-size: 18px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.work-form-input:focus,
+.work-form-textarea:focus {
+    border-color: #fff !important;
+}
+
+.work-submit-btn {
+    align-self: flex-start;
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 16px 48px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: transform 0.2s ease;
+}
+
+.work-submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Footer Section */
+.work-footer-section {
+    padding: 120px 0 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-cta-banner {
+    max-width: 1240px;
+    margin: 0 auto 120px;
+    padding: 0 60px;
+}
+
+.cta-banner-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.cta-banner-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.cta-banner-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    opacity: 0.4;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.cta-banner-title {
+    font-size: 28px;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+}
+
+.cta-banner-description {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.cta-banner-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.footer-brand-grid {
+    max-width: 1240px;
+    margin: 0 auto 80px;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-brand-info {
+    max-width: 320px;
+}
+
+.footer-brand-logo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.footer-brand-tagline {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 32px;
+}
+
+.footer-brand-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 99px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-navigation-grid {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-nav-header {
+    font-size: 13px;
+    font-weight: 800;
+    opacity: 0.4;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.footer-nav-link {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.footer-nav-link:hover {
+    color: #ffffff;
+}
+
+.footer-legal-bar {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px 60px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-legal-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-legal-right-container {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.footer-legal-author {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-legal-badge-container {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-badge-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .work-contact-content {
+        flex-direction: column;
+        gap: 60px;
+    }
+    .footer-brand-grid {
+        flex-direction: column;
+        gap: 60px;
+    }
+    .work-contact-title {
+        font-size: 56px;
+    }
+}

@@ -1,0 +1,191 @@
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+    width: 100%;
+}
+
+.projects-grid.case-studies {
+    gap: 60px 40px;
+}
+
+.work-card {
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.work-image-wrapper {
+    position: relative;
+    aspect-ratio: 1.15;
+    border-radius: 32px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.work-placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container-target {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card:hover .image-container-target {
+    transform: scale(1.05);
+}
+
+.featured-tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+.overlay-texture {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+}
+
+.work-info {
+    text-align: center;
+}
+
+.work-info .work-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.work-date-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 51, 51, 0.15);
+    color: #ff3333;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 51, 51, 0.2);
+}
+
+.work-meta {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+/* Homepage specific decorations */
+.work-homepage-section {
+    padding: 60px 0;
+    background: #000000;
+    color: #ffffff;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.work-homepage-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.work-homepage-header {
+    position: relative;
+    margin-bottom: 40px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.work-homepage-header .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.5;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.work-homepage-header .title {
+    font-size: 96px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin: 0;
+    line-height: 0.85;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Carousel Styles */
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    cursor: grab;
+    padding: 40px 0; /* Add padding for scale effect */
+    
+    /* Fade out edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.inner-carousel {
+    display: flex;
+    gap: 32px; 
+    /* Important for centering */
+    width: max-content; 
+}
+
+.carousel-item {
+    min-width: 400px; /* Must match JS CARD_WIDTH */
+    flex-shrink: 0;
+    /* transition handled by Framer Motion in JS */
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        min-width: 300px; /* Update JS if responsive logic is needed */
+    }
+}
+
+.carousel-item .work-card {
+    /* Disable CSS transition so Framer Motion controls it */
+    transition: none;
+}
+
+.carousel-item .work-card:hover {
+    /* Disable CSS hover effect in carousel */
+    transform: none;
+}

@@ -1,0 +1,121 @@
+.logos-section {
+    padding: 60px 0;
+    background: transparent;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: none;
+    position: relative;
+    z-index: 1; /* Keep ribbon low */
+    
+    /* Fix 2: Kill the hard edge with vertical mask */
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 35%,
+        black 65%,
+        transparent 100%
+    );
+     -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 35%,
+        black 65%,
+        transparent 100%
+    );
+}
+
+/* Removed ::before and ::after to kill hard lines */
+
+.logos-container {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    overflow: hidden; 
+/* Fix 1: Reduce opacity hard */
+    /* opacity: 0.2;  <- Replaced by animation for organic feel */
+    
+    animation: organic-breath 12s ease-in-out infinite;
+    
+    transition: opacity 0.5s ease;
+    mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+@keyframes organic-breath {
+    0%   { opacity: 0.2; filter: blur(0px); }
+    25%  { opacity: 0.18; filter: blur(0.2px); }
+    50%  { opacity: 0.22; filter: blur(0px); }
+    75%  { opacity: 0.19; filter: blur(0.1px); }
+    100% { opacity: 0.2; filter: blur(0px); }
+}
+
+.logos-scroll {
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Space between logo groups */
+    padding: 0 40px;
+    white-space: nowrap;
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-25%); /* Moves the duplicated group left */
+    }
+}
+
+.logo-item {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.05em;
+}
+
+.logo-text.vertical {
+    letter-spacing: 0.2em;
+    font-size: 18px;
+}
+
+.tech-icon svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+}
+
+.logo-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.logos-scroll {
+    display: flex;
+    align-items: center;
+    gap: 100px; /* Increased gap for cleaner separation */
+    padding: 0 40px;
+    white-space: nowrap;
+    animation: scroll 40s linear infinite; /* Slower, more premium speed */
+}
+
+@media (max-width: 768px) {
+    .logos-container {
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+    }
+}

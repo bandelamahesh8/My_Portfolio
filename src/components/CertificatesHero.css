@@ -1,0 +1,41 @@
+.certificates-hero-section {
+    padding: 160px 60px 80px;
+    background: #000;
+    text-align: left;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.certificates-hero-content .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ff3333;
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+}
+
+.certificates-title {
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-bottom: 32px;
+}
+
+.certificates-title .plus {
+    color: #ff3333;
+    font-weight: 400;
+}
+
+.certificates-subtext {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.4);
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .certificates-hero-section {
+        padding: 120px 40px 60px;
+    }
+}

@@ -1,0 +1,112 @@
+import './Testimonials.css'
+import Logo from './Logo'
+import { Code2, Database, Layout, Server, Sparkles, Brain, Zap } from 'lucide-react'
+import { 
+    SiPython, SiJavascript, SiCplusplus, SiC, SiPhp, 
+    SiDjango, SiFlask, SiNodedotjs, 
+    SiHtml5, SiCss3, SiReact, SiBootstrap, 
+    SiMongodb, SiSupabase, SiMysql 
+} from 'react-icons/si'
+import { FaJava } from 'react-icons/fa'
+import { Reveal } from './Animations'
+import { FallingPattern } from './ui/falling-pattern'
+import LazyBackground from './LazyBackground'
+
+const Skills = () => {
+    const skillsCategories = [
+        {
+            title: "Languages",
+            icon: <Code2 size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "Python", icon: <SiPython size={16} /> },
+                { name: "JavaScript", icon: <SiJavascript size={16} /> },
+                { name: "C++", icon: <SiCplusplus size={16} /> },
+                { name: "Java", icon: <FaJava size={16} /> },
+                { name: "C", icon: <SiC size={16} /> },
+                { name: "PHP", icon: <SiPhp size={16} /> }
+            ]
+        },
+        {
+            title: "Backend & APIs",
+            icon: <Server size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "Django", icon: <SiDjango size={16} /> },
+                { name: "Flask", icon: <SiFlask size={16} /> },
+                { name: "Node.js", icon: <SiNodedotjs size={16} /> },
+                { name: "REST APIs", icon: <Zap size={16} /> }
+            ]
+        },
+        {
+            title: "Frontend",
+            icon: <Layout size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "HTML", icon: <SiHtml5 size={16} /> },
+                { name: "CSS", icon: <SiCss3 size={16} /> },
+                { name: "React", icon: <SiReact size={16} /> },
+                { name: "Bootstrap", icon: <SiBootstrap size={16} /> }
+            ]
+        },
+        {
+            title: "Databases",
+            icon: <Database size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "MongoDB", icon: <SiMongodb size={16} /> },
+                { name: "Supabase", icon: <SiSupabase size={16} /> },
+                { name: "MySQL", icon: <SiMysql size={16} /> }
+            ]
+        },
+        {
+            title: "Soft Skills",
+            icon: <Brain size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "Problem-Solving", icon: <Sparkles size={16} /> },
+                { name: "Adaptability", icon: <Zap size={16} /> },
+                { name: "Creative", icon: <Brain size={16} /> }
+            ]
+        }
+    ]
+
+    return (
+        <section className="skills-section relative" id="skills">
+            <LazyBackground className="absolute inset-0">
+                <FallingPattern 
+                    color="rgba(255, 255, 255, 0.05)" 
+                    className="opacity-40"
+                />
+            </LazyBackground>
+            <div className="skills-container relative z-10">
+                <header className="skills-header">
+                    <Reveal>
+                        {/* <p className="eyebrow">EXPERTISE</p> */}
+                        <h2 className="section-title">Skills & Technologies<Logo className="w-8 h-8 mb-4 ml-2 inline-block" color="#ff3333" /></h2>
+                    </Reveal>
+                </header>
+
+                <div className="skills-grid">
+                    {skillsCategories.map((category, index) => (
+                        <Reveal key={index} delay={index * 0.1}>
+                            <div className="skill-card">
+                                <div className="skill-card-header">
+                                    <div className="category-icon-wrapper">
+                                        {category.icon}
+                                    </div>
+                                    <h3 className="category-title">{category.title}</h3>
+                                </div>
+                                <div className="skills-list">
+                                    {category.skills.map((skill, idx) => (
+                                        <div key={idx} className="skill-pill">
+                                            <span className="skill-icon">{skill.icon}</span>
+                                            <span className="skill-name">{skill.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default Skills
