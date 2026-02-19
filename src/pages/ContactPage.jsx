@@ -4,7 +4,7 @@ import { Reveal } from '../components/Animations'
 import { WorkBackground } from '../components/ui/work-background'
 import { FreelancerProfileCard } from '../components/ui/freelancer-profile-card'
 import { Instagram, Twitter, Linkedin, Mail, Calendar, Github } from 'lucide-react'
-import profileImg from '../assets/profile1.png'
+import profileImg from '../assets/Profile1.png'
 import Logo from '../components/Logo'
 
 import PageTransition from '../components/PageTransition'

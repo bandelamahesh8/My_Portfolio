@@ -1,6 +1,6 @@
 import './WorkHero.css'
 import Logo from './Logo'
-import heroBg from '../assets/profile.png'
+import heroBg from '../assets/Profile.png'
 
 const WorkHero = ({ isFullPage }) => {
     return (

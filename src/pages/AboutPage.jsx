@@ -1,5 +1,5 @@
 import './AboutPage.css'
-import profileImg from '../assets/profile1.png'
+import profileImg from '../assets/Profile1.png'
 import PageTransition from '../components/PageTransition'
 import { Reveal } from '../components/Animations'
 import { WavyBackground } from '../components/ui/wavy-background'

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { SlideIn, ScaleIn, BlurIn } from './Animations'
 import Logo from './Logo'
 import { Github, Linkedin, Mail } from 'lucide-react'
-import maheshImg from '../assets/profile1.png' // Updated to profile1.png
+import maheshImg from '../assets/Profile1.png' // Updated to Profile1.png
 import './hero.css'  // Make sure this is the only hero CSS
 
 const Hero = () => {

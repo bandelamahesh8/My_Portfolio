@@ -1,5 +1,5 @@
 import './About.css'
-import profileImg from '../assets/profile.png'
+import profileImg from '../assets/Profile.png'
 import Logo from './Logo'
 import { Reveal } from './Animations'
 import { EtheralShadow } from './ui/etheral-shadow'
