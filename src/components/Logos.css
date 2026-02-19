@@ -45,11 +45,11 @@
 }
 
 @keyframes organic-breath {
-    0%   { opacity: 0.2; filter: blur(0px); }
-    25%  { opacity: 0.18; filter: blur(0.2px); }
-    50%  { opacity: 0.22; filter: blur(0px); }
-    75%  { opacity: 0.19; filter: blur(0.1px); }
-    100% { opacity: 0.2; filter: blur(0px); }
+    0%   { opacity: 0.2; }
+    25%  { opacity: 0.18; }
+    50%  { opacity: 0.22; }
+    75%  { opacity: 0.19; }
+    100% { opacity: 0.2; }
 }
 
 .logos-scroll {

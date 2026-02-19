@@ -16,7 +16,7 @@ export const Reveal = ({ children, width = "fit-content", delay = 0 }) => {
         <div ref={ref} style={{ position: "relative", width }}>
             <motion.div
                 variants={{
-                    hidden: { opacity: 0, y: 75 },
+                    hidden: { opacity: 0, y: 40 },
                     visible: { opacity: 1, y: 0 }
                 }}
                 initial="hidden"
@@ -47,8 +47,8 @@ export const SlideIn = ({ children, direction = "up", delay = 0, duration = 0.5,
     const variants = {
         hidden: { 
             opacity: 0, 
-            x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
-            y: direction === "up" ? 100 : direction === "down" ? -100 : 0
+            x: direction === "left" ? -40 : direction === "right" ? 40 : 0,
+            y: direction === "up" ? 40 : direction === "down" ? -40 : 0
         },
         visible: { opacity: 1, x: 0, y: 0 }
     }

@@ -79,6 +79,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    touch-action: pan-y;
+    /* Avoid triggering stacking context on scroll */
+    transform: none;
 }
 
 
@@ -106,14 +109,8 @@ button {
     border-radius: 10px;
 }
 
-/* Performance: GPU-promote backgrounds to avoid repaint during scroll */
-.background-container,
-.gradient-overlay,
-.hero-grid,
-.hero-grid-rays {
-    will-change: transform;
-    transform: translateZ(0);
-}
+/* Performance: Only promote elements that are actually animating to new layers */
+/* Each component manages its own will-change to avoid GPU memory pressure */
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {

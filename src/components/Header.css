@@ -18,8 +18,8 @@
   /* Translucent Glass Effect */
   background: rgba(10, 10, 12, 0.05); /* Extremely low opacity */
   
-  backdrop-filter: blur(5px) saturate(180%);
-  -webkit-backdrop-filter: blur(5px) saturate(180%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 
   /* Subtle border */
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -30,7 +30,8 @@
 
   /* Phase 6: Nav Bar Final Restraint */
   opacity: 0.85;
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  will-change: transform; /* Pre-promote to own compositing layer */
+  transition: opacity 0.3s ease;
 }
 
 .navbar:hover {

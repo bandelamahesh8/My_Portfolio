@@ -68,11 +68,10 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.5s ease, border-color 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
     height: 100%;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
 }
 
 .skill-card::before {
@@ -157,7 +156,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 8px 16px;
     border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: default;
 }
 

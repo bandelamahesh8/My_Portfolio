@@ -5,18 +5,24 @@ import Lenis from 'lenis'
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.8, // Slightly lower duration for snappier response
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      smooth: true,
-      smoothTouch: false, // Keep native touch scroll for better mobile performance
+      smoothTouch: false,
       touchMultiplier: 2,
+      wheelMultiplier: 1,
+      // Use native scroll for page navigation transitions
+      lerp: 0.1,
     })
 
     let rafId
+    let last = 0
 
     function raf(time) {
-      lenis.raf(time)
+      // Only tick if enough time has passed (target ~60fps cap)
+      if (time - last >= 16) {
+        lenis.raf(time)
+        last = time
+      }
       rafId = requestAnimationFrame(raf)
     }
 
@@ -24,7 +30,7 @@ export default function SmoothScroll() {
 
     return () => {
       cancelAnimationFrame(rafId)
-      lenis.destroy() 
+      lenis.destroy()
     }
   }, [])
 

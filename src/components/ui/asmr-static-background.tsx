@@ -25,10 +25,14 @@ const ASMRStaticBackground: React.FC = () => {
     let particles: Particle[] = [];
     const mouse = { x: -1000, y: -1000 };
 
-    const PARTICLE_COUNT = 1000;
+  const PARTICLE_COUNT = 350;  // Reduced from 1000 — each particle costs CPU every frame
     const MAGNETIC_RADIUS = 280;
     const VORTEX_STRENGTH = 0.07;
     const PULL_STRENGTH = 0.12;
+    const TARGET_FPS = 30;
+    const FRAME_INTERVAL = 1000 / TARGET_FPS;
+    let lastFrameTime = 0;
+    let visible = true;
 
     class Particle {
       x: number = 0;
@@ -139,7 +143,18 @@ const ASMRStaticBackground: React.FC = () => {
       }
     };
 
-    const render = () => {
+    const render = (timestamp: number) => {
+      if (!visible) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+      // Throttle to TARGET_FPS
+      if (timestamp - lastFrameTime < FRAME_INTERVAL) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+      lastFrameTime = timestamp;
+
       // Create slight motion blur effect
       ctx.fillStyle = 'rgba(10, 10, 12, 0.18)';
       ctx.fillRect(0, 0, width, height);
@@ -164,17 +179,24 @@ const ASMRStaticBackground: React.FC = () => {
       }
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => { visible = entry.isIntersecting; },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
     window.addEventListener('resize', init);
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     init();
-    render();
+    render(0);
 
     return () => {
       window.removeEventListener('resize', init);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('touchmove', handleTouchMove);
+      observer.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -185,41 +207,6 @@ const ASMRStaticBackground: React.FC = () => {
         ref={canvasRef}
         className="absolute inset-0 block w-full h-full"
       />
-      
-      {/* Optional UI Overlay
-      <div className="relative z-10 flex flex-col items-center justify-center h-full pointer-events-none">
-        <div className="px-8 py-4 border border-white/5 bg-white/[0.02] backdrop-blur-sm rounded-sm">
-          <h2 className="text-white/30 font-light tracking-[0.7em] uppercase text-sm md:text-xl">
-            Atmospheric Friction
-          </h2>
-          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent my-4" />
-          <p className="text-[10px] text-white/10 tracking-widest text-center">
-            INTERACTIVE KINETIC ENVIRONMENT
-          </p>
-        </div>
-      </div> */}
-
-      {/* Custom cursor follow (optional) */}
-      <div 
-        className="fixed top-0 left-0 w-4 h-4 rounded-full border border-white/20 pointer-events-none transition-transform duration-75 ease-out z-50"
-        style={{
-          transform: `translate(calc(var(--mouse-x, -100px) - 50%), calc(var(--mouse-y, -100px) - 50%))`
-        }}
-      />
-      
-      <style>{`
-        :root {
-          --mouse-x: -100px;
-          --mouse-y: -100px;
-        }
-      `}</style>
-      
-      <script dangerouslySetInnerHTML={{ __html: `
-        window.addEventListener('mousemove', e => {
-          document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
-          document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
-        });
-      `}} />
     </div>
   );
 };

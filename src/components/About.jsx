@@ -11,8 +11,8 @@ const About = () => {
             <LazyBackground className="absolute inset-0 z-0">
                 <EtheralShadow
                     color="rgba(50, 50, 50, 1)"
-                    animation={{ scale: 100, speed: 90 }}
-                    noise={{ opacity: 0.8, scale: 1.2 }}
+                    animation={{ scale: 100, speed: 30 }}
+                    noise={{ opacity: 0.5, scale: 1.2 }}
                     sizing="fill"
                     className="absolute inset-0 z-0"
                     style={{

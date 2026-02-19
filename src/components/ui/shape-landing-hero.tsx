@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -41,33 +41,25 @@ function ElegantShape({
             }}
             className={cn("absolute", className)}
         >
-            <motion.div
-                animate={{
-                    y: [0, 15, 0],
-                }}
-                transition={{
-                    duration: 12,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
-                }}
-                style={{
-                    width,
-                    height,
-                }}
-                className="relative"
-            >
-                <div
-                    className={cn(
-                        "absolute inset-0 rounded-full",
-                        "bg-gradient-to-r to-transparent",
-                        gradient,
-                        "backdrop-blur-[2px] border-2 border-white/[0.15]",
-                        "shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]",
-                        "after:absolute after:inset-0 after:rounded-full",
-                        "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]"
-                    )}
-                />
-            </motion.div>
+            <div
+            style={{
+                width,
+                height,
+            }}
+            className="relative"
+        >
+            <div
+                className={cn(
+                    "absolute inset-0 rounded-full",
+                    "bg-gradient-to-r to-transparent",
+                    gradient,
+                    "border-2 border-white/[0.15]",
+                    "shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]",
+                    "after:absolute after:inset-0 after:rounded-full",
+                    "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]"
+                )}
+            />
+        </div>
         </motion.div>
     );
 }

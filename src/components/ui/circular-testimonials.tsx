@@ -223,34 +223,12 @@ export const CircularTestimonials = ({
               >
                 {activeTestimonial.designation}
               </p>
-              <motion.p
+              <p
                 className="quote"
                 style={{ color: colorTestimony, fontSize: fontSizeQuote }}
               >
-                {activeTestimonial.quote.split(" ").map((word, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{
-                      filter: "blur(10px)",
-                      opacity: 0,
-                      y: 5,
-                    }}
-                    animate={{
-                      filter: "blur(0px)",
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.22,
-                      ease: "easeInOut",
-                      delay: 0.025 * i,
-                    }}
-                    style={{ display: "inline-block" }}
-                  >
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
-              </motion.p>
+                {activeTestimonial.quote}
+              </p>
             </motion.div>
           </AnimatePresence>
           <div className="arrow-buttons">

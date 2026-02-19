@@ -11,18 +11,12 @@ type FallingPatternProps = React.ComponentProps<'div'> & {
 	backgroundColor?: string;
 	/** Animation duration in seconds (default: 150) */
 	duration?: number;
-	/** Blur intensity for the overlay effect (default: '1em') */
-	blurIntensity?: string;
-	/** Pattern density - affects spacing (default: 1) */
-	density?: number;
 };
 
 export function FallingPattern({
 	color = 'rgba(255, 255, 255, 0.1)',
 	backgroundColor = 'transparent',
 	duration = 150,
-	blurIntensity = '1px',
-	density = 1,
 	className,
 }: FallingPatternProps) {
 	// Generate background image style with customizable color
@@ -124,7 +118,7 @@ export function FallingPattern({
 	const endPositions =
 		'0px 6800px, 3px 6800px, 151.5px 6917.5px, 25px 13632px, 28px 13632px, 176.5px 13758px, 50px 5416px, 53px 5416px, 201.5px 5491px, 75px 17175px, 78px 17175px, 226.5px 17301.5px, 100px 5119px, 103px 5119px, 251.5px 5221px, 125px 8428px, 128px 8428px, 276.5px 8495px, 150px 9876px, 153px 9876px, 301.5px 9965.5px, 175px 13391px, 178px 13391px, 326.5px 13540.5px, 200px 14741px, 203px 14741px, 351.5px 14848.5px, 225px 18770px, 228px 18770px, 376.5px 18910.5px, 250px 5082px, 253px 5082px, 401.5px 5161px, 275px 6375px, 278px 6375px, 426.5px 6480px';
 	return (
-		<div className={cn('absolute inset-0 size-full pointer-events-none', className)}>
+		<div className={cn('absolute inset-0 size-full pointer-events-none', className)} style={{ contain: 'strict' }}>
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -139,6 +133,7 @@ export function FallingPattern({
 						backgroundSize: backgroundSizes,
 						willChange: 'background-position',
 						transform: 'translateZ(0)',
+						contain: 'strict',
 					}}
 					variants={{
 						initial: {
@@ -157,16 +152,6 @@ export function FallingPattern({
 					animate="animate"
 				/>
 			</motion.div>
-			<div
-				className="absolute inset-0 z-1"
-				style={{
-					backdropFilter: `blur(${blurIntensity})`,
-					backgroundImage: `radial-gradient(circle at 50% 50%, transparent 0, transparent 2px, ${backgroundColor} 2px)`,
-					backgroundSize: `${8 * density}px ${8 * density}px`,
-					willChange: 'transform',
-					transform: 'translateZ(0)',
-				}}
-			/>
 		</div>
 	);
 }

@@ -97,8 +97,9 @@
     background: transparent;
     border: 30px solid rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    filter: blur(40px);
-    opacity: 0.8;
+    /* filter:blur replaced with box-shadow — same soft glow, no repaint cost */
+    box-shadow: 0 0 60px 40px rgba(255, 255, 255, 0.08);
+    opacity: 1;
 }
 
 @media (max-width: 1024px) {

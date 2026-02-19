@@ -11,6 +11,7 @@
   justify-content: space-between;
   padding: 0 5vw;
   color: white;
+  contain: paint;
 }
 
 /* Top Spotlight Glow */
@@ -59,6 +60,7 @@
   pointer-events: none;
   will-change: transform;
   transform: translateZ(0);
+  contain: strict;
 
   background-image: linear-gradient(
   to right,
@@ -99,6 +101,7 @@
   pointer-events: none;
   will-change: background-position;
   transform: translateZ(0);
+  contain: strict;
 }
 
 /* ... rays styles ... */
@@ -228,8 +231,6 @@
   color: #ffffff;
   margin-top: -0.15em;
   padding: 0;
-  
-  will-change: transform;
 }
 
 /* Individual Rows */

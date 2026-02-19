@@ -66,44 +66,69 @@ export function EtheralShadow({
     customImage
 }: PropsWithChildren<ShadowOverlayProps>) {
     const id = useInstanceId();
+    const containerRef = useRef<HTMLDivElement>(null);
     const animationEnabled = animation && animation.scale > 0;
     const feColorMatrixRef = useRef<SVGFEColorMatrixElement>(null);
     const hueRotateMotionValue = useMotionValue(180);
     const hueRotateAnimation = useRef<AnimationPlaybackControls | null>(null);
+    const visibleRef = useRef(false);
 
     const displacementScale = animation ? mapRange(animation.scale, 1, 100, 20, 100) : 0;
     const animationDuration = animation ? mapRange(animation.speed, 1, 100, 1000, 50) : 1;
 
     useEffect(() => {
-        if (feColorMatrixRef.current && animationEnabled) {
+        if (!animationEnabled) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                visibleRef.current = entry.isIntersecting;
+                if (entry.isIntersecting) {
+                    // Resume: restart the animation
+                    if (!hueRotateAnimation.current) {
+                        hueRotateMotionValue.set(0);
+                        let frameCount = 0; // Throttle counter
+                        hueRotateAnimation.current = animate(hueRotateMotionValue, 360, {
+                            duration: animationDuration / 25,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            repeatDelay: 0,
+                            ease: "linear",
+                            delay: 0,
+                            onUpdate: (value: number) => {
+                                // Update only every 2nd frame (30fps) to save CPU
+                                frameCount++;
+                                if (frameCount % 2 !== 0) return;
+
+                                if (feColorMatrixRef.current) {
+                                     feColorMatrixRef.current.setAttribute("values", String(value));
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    // Pause: stop animation when off-screen
+                    if (hueRotateAnimation.current) {
+                        hueRotateAnimation.current.stop();
+                        hueRotateAnimation.current = null;
+                    }
+                }
+            },
+            { threshold: 0.05 }
+        );
+
+        if (containerRef.current) observer.observe(containerRef.current);
+
+        return () => {
+            observer.disconnect();
             if (hueRotateAnimation.current) {
                 hueRotateAnimation.current.stop();
             }
-            hueRotateMotionValue.set(0);
-            hueRotateAnimation.current = animate(hueRotateMotionValue, 360, {
-                duration: animationDuration / 25,
-                repeat: Infinity,
-                repeatType: "loop",
-                repeatDelay: 0,
-                ease: "linear",
-                delay: 0,
-                onUpdate: (value: number) => {
-                    if (feColorMatrixRef.current) {
-                        feColorMatrixRef.current.setAttribute("values", String(value));
-                    }
-                }
-            });
-
-            return () => {
-                if (hueRotateAnimation.current) {
-                    hueRotateAnimation.current.stop();
-                }
-            };
-        }
+        };
     }, [animationEnabled, animationDuration, hueRotateMotionValue]);
 
     return (
         <div
+            ref={containerRef}
             className={cn(className)}
             style={{
                 overflow: "hidden",
@@ -116,9 +141,10 @@ export function EtheralShadow({
                 style={{
                     position: "absolute",
                     inset: -displacementScale,
-                    filter: animationEnabled ? `url(#${id}) blur(4px)` : "none",
-                    willChange: animationEnabled ? 'filter' : 'auto',
+                    filter: animationEnabled ? `url(#${id}) blur(2px)` : "none",
+                    willChange: 'auto',
                     transform: 'translateZ(0)',
+                    contain: 'strict',
                 }}
             >
                 {animationEnabled && (
@@ -127,7 +153,7 @@ export function EtheralShadow({
                             <filter id={id}>
                                 <feTurbulence
                                     result="undulation"
-                                    numOctaves="2"
+                                    numOctaves="1"
                                     baseFrequency={`${mapRange(animation.scale, 0, 100, 0.001, 0.0005)},${mapRange(animation.scale, 0, 100, 0.004, 0.002)}`}
                                     seed="0"
                                     type="turbulence"

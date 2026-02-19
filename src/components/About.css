@@ -1,12 +1,18 @@
 .about-section {
     position: relative;
-    z-index: 5; /* Punch through ribbon */
+    z-index: 5;
     padding: 80px 0;
     width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     background: transparent;
+    contain: paint;
+}
+
+/* Spacer for scroll position */
+.about-spacer {
+    display: none;
 }
 
 .about-container {
@@ -60,16 +66,7 @@
 }
 
 .about-image-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
-    filter: blur(40px);
-    z-index: 1;
-    pointer-events: none;
+    display: none;
 }
 
 /* Text Side */
@@ -134,8 +131,7 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.25s ease;
-    backdrop-filter: blur(8px);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .about-cta:hover {

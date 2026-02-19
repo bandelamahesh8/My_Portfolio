@@ -3,6 +3,16 @@ import React from "react"
 import { motion } from "framer-motion"
 import { cn } from "../../lib/utils"
 
+// Pre-compute random values at module level to avoid re-computation on every render
+// This is critical — Math.random() inside a render function causes new animation targets
+// every render, which breaks Framer Motion's transition optimization
+const BEAM_COUNT = 15 // ~57 paths filtered to every 4th = ~14; we use 15 for cleaner look
+const STABLE_RANDOMS = Array.from({ length: BEAM_COUNT }, (_, i) => ({
+  y2: 93 + ((i * 7.3 + 2.1) % 8),        // deterministic pseudo-random
+  duration: 10 + ((i * 3.7 + 1.5) % 10), // 10-20s
+  delay: (i * 1.3 + 0.5) % 10,           // 0-10s stagger
+}))
+
 export const BackgroundBeams = React.memo(
   ({ className }: { className?: string }) => {
     const paths = [
@@ -68,9 +78,10 @@ export const BackgroundBeams = React.memo(
     return (
       <div
         className={cn(
-          "absolute  h-full w-full inset-0  [mask-size:40px] [mask-repeat:no-repeat] flex items-center justify-center",
+          "absolute h-full w-full inset-0 flex items-center justify-center",
           className,
         )}
+        style={{ contain: 'strict' }}
       >
         <svg
           className=" z-0 h-full w-full pointer-events-none absolute "
@@ -99,6 +110,7 @@ export const BackgroundBeams = React.memo(
           <defs>
             {paths.filter((_, index) => index % 4 === 0).map((_, i) => {
               const index = i;
+              const r = STABLE_RANDOMS[index] ?? STABLE_RANDOMS[0];
               return (
               <motion.linearGradient
                 id={`linearGradient-${index}`}
@@ -113,13 +125,13 @@ export const BackgroundBeams = React.memo(
                   x1: ["0%", "100%"],
                   x2: ["0%", "95%"],
                   y1: ["0%", "100%"],
-                  y2: ["0%", `${93 + Math.random() * 8}%`],
+                  y2: ["0%", `${r.y2}%`],
                 }}
                 transition={{
-                  duration: Math.random() * 10 + 10,
+                  duration: r.duration,
                   ease: "easeInOut",
                   repeat: Infinity,
-                  delay: Math.random() * 10,
+                  delay: r.delay,
                 }}
               >
                 <stop stopColor="#18CCFC" stopOpacity="0"></stop>

@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils";
 
 export const WorkBackground = ({ className }: { className?: string }) => {
   return (
-    <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
+    <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)} style={{ contain: 'strict' }}>
       <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-full h-full flex items-center justify-center">
         {/* SVG Container for complex rings */}
         <svg className="absolute w-[1000px] h-[1000px]" viewBox="0 0 1000 1000">
@@ -65,7 +65,7 @@ export const WorkBackground = ({ className }: { className?: string }) => {
           className="absolute w-[300px] h-[300px] border-[2px] border-transparent rounded-full"
           style={{
             background: "linear-gradient(white, white) padding-box, linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.6), rgba(255,255,255,0.2)) border-box",
-            filter: "blur(0.5px) drop-shadow(0 0 30px rgba(255, 255, 255, 0.3))"
+            willChange: 'transform',
           }}
         />
 
