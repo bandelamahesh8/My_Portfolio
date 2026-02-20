@@ -18,43 +18,43 @@ const Skills = () => {
             title: "Languages",
             icon: <Code2 size={24} className="text-[#ff3333]" />,
             skills: [
-                { name: "Python", icon: <SiPython size={16} /> },
-                { name: "JavaScript", icon: <SiJavascript size={16} /> },
-                { name: "C++", icon: <SiCplusplus size={16} /> },
-                { name: "Java", icon: <FaJava size={16} /> },
-                { name: "C", icon: <SiC size={16} /> },
-                { name: "PHP", icon: <SiPhp size={16} /> }
+                { name: "Python", icon: <SiPython size={16} color="#3776AB" /> },
+                { name: "JavaScript", icon: <SiJavascript size={16} color="#F7DF1E" /> },
+                { name: "C++", icon: <SiCplusplus size={16} color="#00599C" /> },
+                { name: "Java", icon: <FaJava size={16} color="#ED8B00" /> },
+                { name: "C", icon: <SiC size={16} color="#A8B9CC" /> },
+                { name: "PHP", icon: <SiPhp size={16} color="#777BB4" /> }
             ]
         },
         {
             title: "Frontend",
             icon: <Layout size={24} className="text-[#ff3333]" />,
             skills: [
-                { name: "HTML", icon: <SiHtml5 size={16} /> },
-                { name: "CSS", icon: <SiCss3 size={16} /> },
-                { name: "React", icon: <SiReact size={16} /> },
-                { name: "Bootstrap", icon: <SiBootstrap size={16} /> }
+                { name: "HTML", icon: <SiHtml5 size={16} color="#E34F26" /> },
+                { name: "CSS", icon: <SiCss3 size={16} color="#1572B6" /> },
+                { name: "React", icon: <SiReact size={16} color="#61DAFB" /> },
+                { name: "Bootstrap", icon: <SiBootstrap size={16} color="#7952B3" /> }
             ]
         },
         {
             title: "Backend & Databases",
-            icon: <Server size={24} className="text-[#ff3333]" />,
+            icon: <Database size={24} className="text-[#ff3333]" />,
             skills: [
-                { name: "Django", icon: <SiDjango size={16} /> },
-                { name: "Flask", icon: <SiFlask size={16} /> },
-                { name: "Node.js", icon: <SiNodedotjs size={16} /> },
-                { name: "MongoDB", icon: <SiMongodb size={16} /> },
-                { name: "Supabase", icon: <SiSupabase size={16} /> },
-                { name: "MySQL", icon: <SiMysql size={16} /> }
+                { name: "Django", icon: <SiDjango size={16} color="#092E20" /> },
+                { name: "Flask", icon: <SiFlask size={16} color="#ffffff" /> },
+                { name: "Node.js", icon: <SiNodedotjs size={16} color="#339933" /> },
+                { name: "MongoDB", icon: <SiMongodb size={16} color="#47A248" /> },
+                { name: "Supabase", icon: <SiSupabase size={16} color="#3ECF8E" /> },
+                { name: "MySQL", icon: <SiMysql size={16} color="#4479A1" /> }
             ]
         },
         {
             title: "Soft Skills",
             icon: <Brain size={24} className="text-[#ff3333]" />,
             skills: [
-                { name: "Problem-Solving", icon: <Sparkles size={16} /> },
-                { name: "Adaptability", icon: <Zap size={16} /> },
-                { name: "Creative", icon: <Brain size={16} /> }
+                { name: "Problem-Solving", icon: <Sparkles size={16} color="#ff3333" /> },
+                { name: "Adaptability", icon: <Zap size={16} color="#ff3333" /> },
+                { name: "Creative", icon: <Brain size={16} color="#ff3333" /> }
             ]
         }
     ]

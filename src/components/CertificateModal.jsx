@@ -96,8 +96,8 @@ const CertificateModal = ({ certificate, isOpen, onClose, onNext, onPrev }) => {
                                         <div className="info-block">
                                             <Calendar size={18} className="info-icon" />
                                             <div>
-                                                <h4 className="info-label">Issued Date</h4>
-                                                <p className="info-text">2024 (Verified)</p>
+                                                <h4 className="info-label">Issued Year</h4>
+                                                <p className="info-text">{certificate.year || "Present (Ongoing)"}</p>
                                             </div>
                                         </div>
                                     </div>

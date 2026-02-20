@@ -19,16 +19,17 @@
 
 .cert-modal-card {
     width: 100%;
-    max-width: 550px; /* Further reduced from 700px */
+    max-width: 1000px; /* Increased from 550px for desktop prominence */
     background: #0a0a0b;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    border-radius: 20px; /* More elegant rounding */
     position: relative;
     pointer-events: auto;
     overflow: hidden;
-    max-height: 48vh; /* Further reduced from 55vh */
+    max-height: 85vh; /* Increased from 48vh for full detail view */
     height: auto;
     touch-action: none;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
 }
 
 .swipe-indicator {
@@ -73,7 +74,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100%;
-    min-height: 400px;
+    min-height: 500px; /* Increased from 400px */
 }
 
 .cert-modal-visual {
@@ -81,7 +82,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 32px; /* Increased from 20px */
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
     height: 100%;
@@ -99,7 +100,7 @@
 }
 
 .cert-modal-details {
-    padding: 16px; /* Further reduced from 24px */
+    padding: 40px; /* Increased from 16px for spacious luxury feel */
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -124,10 +125,10 @@
 }
 
 .cert-modal-title {
-    font-size: 18px; /* Further reduced from 24px */
-    font-weight: 800;
-    margin-bottom: 4px;
-    letter-spacing: -0.02em;
+    font-size: 32px; /* Increased from 18px */
+    font-weight: 900;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
 }
 
 .cert-modal-org {
@@ -164,8 +165,8 @@
 }
 
 .info-text {
-    font-size: 12px; /* Further reduced from 13px */
-    line-height: 1.4;
+    font-size: 15px; /* Increased from 12px */
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.7);
 }
 

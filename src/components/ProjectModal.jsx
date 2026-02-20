@@ -131,7 +131,7 @@ const ProjectModal = ({ project, isOpen, onClose, onNext, onPrev }) => {
                                         </div>
                                     </div>
 
-                                    <div className="modal-actions">
+                                    {/* <div className="modal-actions">
                                         <a href="#" className="modal-btn primary">
                                             <span>Live Demo</span>
                                             <ExternalLink size={16} />
@@ -140,7 +140,7 @@ const ProjectModal = ({ project, isOpen, onClose, onNext, onPrev }) => {
                                             <Github size={16} />
                                             <span>Source</span>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </motion.div>

@@ -50,11 +50,10 @@ const About = () => {
                                 I’m <strong>Mahesh (Bandela Mahesh)</strong>, a <strong>Product Designer & Developer</strong> 
                                 building cinematic, high-performance web systems where advanced UI engineering, motion design, 
                                 and scalable backend architecture intersect.
-                                </p>
                                 {!isExpanded && (
                                     <button 
                                         onClick={() => setIsExpanded(true)}
-                                        className="read-more-btn"
+                                        className="read-more-btn mobile-only"
                                         style={{
                                             background: 'none',
                                             border: 'none',
@@ -70,10 +69,10 @@ const About = () => {
                                         Read more
                                     </button>
                                 )}
+                                </p>
                           </Reveal>
                           
-                          {isExpanded && (
-                              <>
+                          <div className={`expandable-content ${isExpanded ? 'expanded' : ''}`}>
                                 <Reveal delay={0.5}>
                                     <p>
                                     I design and build production-grade full-stack systems — turning complex design systems into 
@@ -98,7 +97,7 @@ const About = () => {
 
                                 <button 
                                     onClick={() => setIsExpanded(false)}
-                                    className="read-less-btn"
+                                    className="read-less-btn mobile-only"
                                     style={{
                                         background: 'none',
                                         border: 'none',
@@ -113,8 +112,7 @@ const About = () => {
                                 >
                                     Read less
                                 </button>
-                              </>
-                          )}
+                          </div>
                     </div>
                 </div>
             </div>

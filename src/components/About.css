@@ -288,3 +288,22 @@
         font-size: 12px;
     }
 }
+
+/* Mobile Read More / Read Less Logic */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+    .expandable-content {
+        display: block !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .expandable-content {
+        display: none;
+    }
+    .expandable-content.expanded {
+        display: block;
+    }
+}

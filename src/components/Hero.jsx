@@ -1,6 +1,4 @@
-// hero.jsx (Updated - REMOVE rays, ADD static grid)
 import { useState } from 'react'
-
 import { motion } from 'framer-motion'
 import { SlideIn, ScaleIn, BlurIn } from './Animations'
 import Logo from './Logo'
@@ -57,51 +55,45 @@ const Hero = () => {
         <SlideIn direction="left" delay={0.6}>
         <div className="desc-wrapper">
           <p className="desc">
-            Hi! I’m Mahesh — a Product Designer & Developer crafting cinematic, performance-driven web experiences. 
-            {!isExpanded && (
-              <>
-                <span className="dots">... </span>
-                <button 
-                  onClick={() => setIsExpanded(true)} 
-                  className="read-more-btn"
-                  style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    color: 'rgba(255, 255, 255, 0.6)', 
-                    cursor: 'pointer', 
-                    fontSize: 'inherit', 
-                    fontWeight: 500,
-                    textDecoration: 'underline',
-                    padding: 0,
-                    marginLeft: '4px'
-                  }}
-                >
-                  Read more
-                </button>
-              </>
-            )}
-            {isExpanded && (
-              <>
-                <span> I build full-stack, AI-powered systems with a sharp focus on motion, 3D depth, and production-grade performance.</span>
-                <button 
-                  onClick={() => setIsExpanded(false)} 
-                  className="read-less-btn"
-                  style={{ 
-                    background: 'none', 
-                    border: 'none', 
-                    color: 'rgba(255, 255, 255, 0.6)', 
-                    cursor: 'pointer', 
-                    fontSize: 'inherit', 
-                    fontWeight: 500,
-                    textDecoration: 'underline',
-                    padding: 0,
-                    marginLeft: '4px'
-                  }}
-                >
-                  Read less
-                </button>
-              </>
-            )}
+            Hi! I’m Mahesh — a Product Designer & Developer crafting cinematic, performance-driven web experiences.
+            <span className={`dots ${isExpanded ? 'hidden' : 'mobile-only'}`}>... </span>
+            <button 
+              onClick={() => setIsExpanded(true)} 
+              className={`read-more-btn mobile-only ${isExpanded ? 'hidden' : ''}`}
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                color: 'rgba(255, 255, 255, 0.6)', 
+                cursor: 'pointer', 
+                fontSize: 'inherit', 
+                fontWeight: 500,
+                textDecoration: 'underline',
+                padding: 0,
+                marginLeft: '4px'
+              }}
+            >
+              Read more
+            </button>
+            <span className={`extra-desc ${isExpanded ? 'expanded' : ''}`}>
+              {" "}I build full-stack, AI-powered systems with a sharp focus on motion, 3D depth, and production-grade performance.
+              <button 
+                onClick={() => setIsExpanded(false)} 
+                className="read-less-btn mobile-only"
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: 'rgba(255, 255, 255, 0.6)', 
+                  cursor: 'pointer', 
+                  fontSize: 'inherit', 
+                  fontWeight: 500,
+                  textDecoration: 'underline',
+                  padding: 0,
+                  marginLeft: '4px'
+                }}
+              >
+                Read less
+              </button>
+            </span>
           </p>
         </div>
         </SlideIn>

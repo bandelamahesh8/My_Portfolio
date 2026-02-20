@@ -113,7 +113,7 @@ const Articles = () => {
                                 <div className="article-card-inner bg-white/[0.02] border border-white/[0.08] rounded-xl sm:rounded-[2rem] p-0 hover:bg-white/[0.04] transition-all duration-500 h-full flex flex-col justify-between overflow-hidden group">
                                     <div className="flex flex-col h-full">
                                         <div 
-                                            className="h-24 sm:h-56 w-full relative overflow-hidden cursor-pointer"
+                                            className="article-card-image-wrap h-24 sm:h-56 w-full relative overflow-hidden cursor-pointer"
                                             onClick={() => handleViewCertificate(item)}
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 opacity-40 group-hover:opacity-20 transition-opacity duration-500" />
@@ -134,7 +134,7 @@ const Articles = () => {
                                             </div>
                                         </div>
                                         
-                                        <div className="p-3 sm:p-8 flex flex-col flex-grow">
+                                        <div className="article-card-content p-3 sm:p-8 flex flex-col flex-grow">
                                             <div className="flex justify-between items-center mb-2 sm:mb-6">
                                                 <span className="text-white/40 text-[7px] sm:text-[10px] font-bold uppercase tracking-[0.2em]">{item.year}</span>
                                                 {item.certificate && <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#8b0000] shadow-[0_0_8px_#ff3333]"></span>}

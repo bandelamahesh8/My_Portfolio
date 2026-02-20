@@ -321,6 +321,9 @@ export const CircularTestimonials = ({
           .testimonial-grid {
             grid-template-columns: 1fr 1.2fr;
           }
+          .testimonial-content {
+            transform: translateX(40px);
+          }
         }
       `}</style>
     </div>

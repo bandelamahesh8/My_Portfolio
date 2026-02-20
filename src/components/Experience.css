@@ -10,9 +10,9 @@
 }
 
 .experience-container {
-    max-width: 1240px;
+    max-width: 1440px; /* Increased from 1240px */
     width: 100%;
-    padding: 0 40px;
+    padding: 0 60px;
 }
 
 .section-header {
@@ -48,17 +48,24 @@
     margin-left: -4px;
 }
 
+.experience-cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Spacing between internship/training cards */
+    margin-top: 40px;
+}
+
 /* Unified Training Card Container */
 .training-unified-card {
-    max-width: 850px; /* Reduced from 1000px */
+    max-width: 1200px; /* Further increased for expansive desktop view */
     margin: 40px auto;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 48px;
-    padding: 40px; /* Reduced from 60px */
+    padding: 60px 80px; /* Increased horizontal padding */
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1.1fr 1fr; /* Refined balance */
+    gap: 100px; /* Increased gap for wide layout */
     align-items: center;
     backdrop-filter: blur(8px);
     position: relative;
@@ -76,15 +83,16 @@
 .training-visual-side {
     position: relative;
     z-index: 2;
-    /* Critique Fix: Reduce image dominance */
-    max-width: 85%; /* Reduced from 90% */
-    margin: 0 auto;
+    /* Increased dominance to match reference */
+    width: 100%;
+    margin: 0;
 }
 
 .certificate-frame {
     background: rgba(10, 10, 10, 0.4);
-    border: 1px solid rgba(255, 215, 0, 0.1); /* Reduced intensity */
+    border: 2px solid #ff3333; /* Prominent red border from image */
     border-radius: 12px;
+    padding: 2px; /* Inner spacing like image */
     /* aspect-ratio removed to fit image naturally */
     width: 100%;
     display: block;
@@ -285,5 +293,24 @@
     }
     .training-feature-list li {
         font-size: 13px;
+    }
+}
+
+/* Mobile Read More / Read Less Logic */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+    .extra-feature {
+        display: list-item !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .extra-feature {
+        display: none;
+    }
+    .extra-feature.expanded {
+        display: list-item;
     }
 }

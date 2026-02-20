@@ -47,5 +47,34 @@
 @media (max-width: 768px) {
     .articles-grid {
         padding: 0 1.5rem;
+        gap: 12px;
+    }
+    
+    /* When there are 3 items, make the first one span full width on mobile */
+    .articles-grid > *:first-child {
+        grid-column: span 2;
+    }
+
+    /* Increase image height for the big featured card on mobile */
+    .articles-grid > *:first-child .article-card-image-wrap {
+        height: 180px; /* Increased from 96px (h-24) to be BIG */
+    }
+
+    /* Bolder fonts for the featured card */
+    .articles-grid > *:first-child h3 {
+        font-size: 18px;
+    }
+
+    /* General mobile improvements for all cards */
+    .article-card-content h3 {
+        font-size: 14px; /* Balanced for single column */
+    }
+
+    .article-card-content span {
+        font-size: 9px !important; /* Year/institution labels */
+    }
+
+    .article-card-content {
+        padding: 16px;
     }
 }
