@@ -1,3 +1,4 @@
+// Build Trigger: Standardized paths
 import { useState } from 'react'
 import './Experience.css'
 import Logo from './Logo'
