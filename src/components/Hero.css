@@ -321,6 +321,7 @@
 }
 
 /* ... buttons ... */
+/* Button Refinement - Phase 5: Hardware Feel */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -337,35 +338,44 @@
   /* Micro-luxury blur */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+
+  /* Deep hardware feel */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    0 8px 24px rgba(0,0,0,0.6);
+}
+
+.btn:hover {
+  transform: scale(1.06); /* Micro motion */
+  box-shadow: 0 0 18px rgba(255, 60, 60, 0.35); /* Critique Fix: Brand coherence */
 }
 
 .btn svg {
   margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover svg {
+  stroke: #ff3333; /* Critique Fix: One decisive brand signal */
+  color: #ff3333; /* fallback */
 }
 
 .btn.primary {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.08); /* Darker glass foundation */
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .btn.primary:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  /* transform handled by generic :hover */
 }
 
 .btn.ghost {
   background: transparent;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.btn.ghost:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-  border-color: rgba(255, 255, 255, 0.2);
 }
 
 
@@ -451,40 +461,189 @@
 
   .hero-content {
     align-items: center;
-    margin-left: 0; /* Reset desktop shift */
-    margin-top: 0; /* Let padding handle spacing */
+    margin-left: 0;
+    margin-top: 0;
     width: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.9),
+      rgba(0,0,0,0.7),
+      rgba(0,0,0,0)
+    );
   }
 
+  .top-row {
+    justify-content: center;
+  }
 
+  .desc {
+    max-width: 100%;
+  }
 }
 
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.25rem; /* Fallback */
-    width: 100%; /* Allow full width */
-    align-items: center; /* Center align on mobile if needed */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 4vw;
+    padding-top: 80px;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .hero-right {
+    display: flex;
+    position: absolute; /* Background positioning */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    z-index: 1; /* Behind content (z-index 10) */
+    pointer-events: none;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 0.3; /* Low opacity as requested */
+    mix-blend-mode: luminosity; /* Optional: makes it blend better */
+  }
+
+  .hero-image-wrapper {
+    height: 100%;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  
+  .hero-photo {
+    height: 80%; /* Don't cover entire screen, maybe bottom 80%? or 100% cover */
+    width: auto;
+    object-fit: cover;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+  }
+
+  .hero-content {
+    margin-top: 40px;
+    padding: 1.5rem;
   }
 
   .bandela-text {
-    font-size: 3rem; /* Smaller on mobile */
+    font-size: 3.5rem;
   }
 
   .mahesh-big {
-    font-size: 3.5rem; /* Smaller on mobile */
-    margin-top: 0;
+    font-size: 4.5rem;
   }
-  
-  .top-row {
-    justify-content: center; /* Center align visually */
+
+  .desc {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin-bottom: 2rem;
   }
 
   .hero-actions {
-    flex-direction: column;
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .hero-grid {
+    left: 0;
+  }
+
+  .hero-grid-rays {
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 3vw;
+    padding-top: clamp(88px, 12vh, 120px); /* Critique Fix: Dialed back overshoot */
+    text-align: left;
+  }
+
+  .hero-content {
+    padding: 1rem;
+    margin-top: 300px; /* Critique Fix: More overlap (160px) */
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0,0,0,0.8) 20%,
+      rgba(0,0,0,0.9)
+    );
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
     width: 100%;
+    align-items: flex-start;
+  }
+
+  .bandela-text {
+    font-size: 2.4rem;
+    line-height: 0.95; /* Critique Fix: Tighter rhythm */
+  }
+
+  .mahesh-big {
+    font-size: 3.2rem;
+    margin-top: -6px; /* Critique Fix: Tighter lockup */
+    text-align: left;
+    line-height: 0.95;
+  }
+
+  .top-row {
+    justify-content: flex-start;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    transform: translateY(1em);
+    margin-bottom: 0.5rem; /* Critique Fix: Tighten gap (8px) */
+    align-self: flex-start;
+    letter-spacing: 0.2em; /* Critique Fix: Authority */
+    opacity: 0.7;
+  }
+
+  .desc {
+    font-size: 0.875rem;
+    line-height: 1.75; /* Critique Fix: Readability */
+    margin-bottom: 1.5rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.78); /* Critique Fix: Brighter text */
+    max-width: 32ch; /* Critique Fix: Capped width */
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 1.5rem;
+    margin-top: 0rem;
+    padding-left: 0;
   }
 
   .btn {
-    width: 100%;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn svg {
+    margin: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  .logo-sup {
+    transform: scale(1) translateY(2px);
+  }
+  
+  .hero-photo {
+      margin-bottom: 12vh;
+      margin-left: 20px;
+      object-position: center 20%; /* Critique Fix: Better crop */
   }
 }

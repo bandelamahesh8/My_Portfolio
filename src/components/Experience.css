@@ -50,12 +50,12 @@
 
 /* Unified Training Card Container */
 .training-unified-card {
-    max-width: 1240px;
+    max-width: 850px; /* Reduced from 1000px */
     margin: 40px auto;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 48px;
-    padding: 60px;
+    padding: 40px; /* Reduced from 60px */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
@@ -76,17 +76,20 @@
 .training-visual-side {
     position: relative;
     z-index: 2;
+    /* Critique Fix: Reduce image dominance */
+    max-width: 85%; /* Reduced from 90% */
+    margin: 0 auto;
 }
 
 .certificate-frame {
     background: rgba(10, 10, 10, 0.4);
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.1); /* Reduced intensity */
     border-radius: 12px;
     /* aspect-ratio removed to fit image naturally */
     width: 100%;
     display: block;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Softer shadow */
 }
 
 .cert-header {
@@ -148,10 +151,11 @@
 }
 
 .training-title-large {
-    font-size: 44px;
+    font-size: 40px; /* Slight adjustment */
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 6px; /* Tighter gap to meta */
     letter-spacing: -0.01em;
+    color: #fff;
 }
 
 .training-institution {
@@ -216,5 +220,70 @@
     .training-visual-side {
         max-width: 400px;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .experience-section {
+        padding: 60px 0;
+    }
+    .experience-container {
+        padding: 0 20px;
+    }
+    .section-header {
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+    .experience-section .section-title {
+        font-size: 48px;
+        margin-left: 0;
+        text-align: center; /* Center alignment */
+        width: 100%;
+    }
+    .training-unified-card {
+        padding: 20px; /* Reduced from 24px */
+        border-radius: 24px;
+        gap: 24px;
+    }
+    .training-title-large {
+        font-size: 32px;
+    }
+    .training-feature-list li {
+        font-size: 14px;
+    }
+    .view-cert-btn {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-section {
+        padding: 40px 0;
+    }
+    .experience-container {
+        padding: 0 16px;
+    }
+    .section-header {
+        padding: 0 16px;
+        margin-bottom: 30px;
+    }
+    .experience-section .section-title {
+        font-size: 36px;
+        margin-left: 0;
+    }
+    .training-unified-card {
+        padding: 20px;
+        border-radius: 20px;
+        gap: 24px;
+    }
+    .training-title-large {
+        font-size: 24px;
+    }
+    .training-institution {
+        font-size: 14px;
+    }
+    .training-feature-list li {
+        font-size: 13px;
     }
 }

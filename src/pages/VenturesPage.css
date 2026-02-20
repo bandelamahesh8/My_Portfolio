@@ -259,3 +259,30 @@
         font-size: 2.5rem;
     }
 }
+
+@media (max-width: 480px) {
+    .venture-card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+    .venture-card-title {
+        font-size: 1.4rem;
+    }
+    .venture-card-desc {
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+    .venture-image-container {
+        height: 180px;
+        border-radius: 12px;
+    }
+    .contact-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    .ventures-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+}

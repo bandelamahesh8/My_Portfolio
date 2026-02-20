@@ -99,7 +99,7 @@ export const FreelancerProfileCard = React.forwardRef<
       <motion.div
         ref={ref}
         className={cn(
-          "relative w-full max-w-[850px] overflow-hidden rounded-[48px] bg-card shadow-[0_48px_80px_-24px_rgba(0,0,0,0.6)]",
+          "relative w-full max-w-[850px] overflow-hidden rounded-[24px] sm:rounded-[48px] bg-card shadow-[0_48px_80px_-24px_rgba(0,0,0,0.6)]",
           className
         )}
         variants={cardVariants}
@@ -109,7 +109,7 @@ export const FreelancerProfileCard = React.forwardRef<
         {...motionProps}
       >
         {/* Banner Image */}
-        <div className="h-60 w-full">
+        <div className="h-20 sm:h-60 w-full">
           <img
             src={bannerSrc}
             alt={`${name}'s banner`}
@@ -118,8 +118,8 @@ export const FreelancerProfileCard = React.forwardRef<
         </div>
 
         {/* Avatar (overlaps banner) */}
-        <div className="absolute left-14 top-60 -translate-y-1/2">
-          <Avatar className="h-32 w-32 border-[8px] border-card shadow-3xl">
+        <div className="absolute left-4 sm:left-14 top-20 sm:top-60 -translate-y-1/2">
+          <Avatar className="h-14 w-14 sm:h-32 sm:w-32 border-[3px] sm:border-[8px] border-card shadow-3xl">
             <AvatarImage src={avatarSrc} alt={name} />
             <AvatarFallback>{avatarName}</AvatarFallback>
           </Avatar>
@@ -127,7 +127,7 @@ export const FreelancerProfileCard = React.forwardRef<
 
         {/* Content Area */}
         <motion.div
-          className="pl-14 pr-10 pb-12 pt-16" // Increased top padding to nudge content down for more height
+          className="px-4 pb-6 pt-12 sm:pl-14 sm:pr-10 sm:pb-12 sm:pt-16" 
           variants={contentVariants}
         >
           {/* Name, Title, and Tools */}
@@ -135,11 +135,11 @@ export const FreelancerProfileCard = React.forwardRef<
             className="mb-4 flex items-start justify-between"
             variants={itemVariants}
           >
-            <div className="max-w-[70%]">
-              <h2 className="text-4xl font-bold text-white tracking-tighter leading-tight">
+            <div className="max-w-[75%]">
+              <h2 className="text-lg sm:text-4xl font-bold text-white tracking-tighter leading-tight">
                 {name}
               </h2>
-              <p className="text-xl text-white/60 font-medium opacity-80">{title}</p>
+              <p className="text-xs sm:text-xl text-white/60 font-medium opacity-80">{title}</p>
             </div>
             <div className="flex flex-col items-end gap-1.5">
               <div className="flex gap-2">{tools}</div>
@@ -148,7 +148,7 @@ export const FreelancerProfileCard = React.forwardRef<
 
           {/* Stats */}
           <motion.div
-            className="my-6 flex items-center justify-around rounded-[20px] border border-border bg-background/30 px-3 py-4 shadow-inner"
+            className="my-4 sm:my-6 flex items-center justify-around rounded-[16px] sm:rounded-[20px] border border-border bg-background/30 px-3 py-4 shadow-inner"
             variants={itemVariants}
           >
             <StatItem value={stat1} />
@@ -160,7 +160,7 @@ export const FreelancerProfileCard = React.forwardRef<
 
           {/* Action Button */}
           <motion.div variants={itemVariants}>
-            <Button className="w-full h-16 text-xl font-black rounded-[20px] shadow-2xl hover:shadow-primary/30 transition-all duration-500 ease-out" size="lg" onClick={onGetInTouch}>
+            <Button className="w-full h-10 sm:h-16 text-base sm:text-xl font-black rounded-[12px] sm:rounded-[20px] shadow-2xl hover:shadow-primary/30 transition-all duration-500 ease-out" size="lg" onClick={onGetInTouch}>
               Get in touch
             </Button>
           </motion.div>
@@ -181,16 +181,16 @@ const StatItem = ({
   value: string | number;
   label?: string;
 }) => (
-  <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
+  <div className="flex flex-1 flex-col items-center justify-center px-1 sm:px-2 text-center">
     <div className="flex items-center gap-1">
-      {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
-      <span className="text-sm font-semibold text-card-foreground whitespace-nowrap">
+      {Icon && <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />}
+      <span className="text-[10px] sm:text-sm font-semibold text-card-foreground whitespace-nowrap">
         {value}
       </span>
     </div>
-    {label && <span className="text-xs capitalize text-muted-foreground">{label}</span>}
+    {label && <span className="text-[9px] sm:text-xs capitalize text-muted-foreground">{label}</span>}
   </div>
 );
 
 // Internal Divider component
-const Divider = () => <div className="h-10 w-px bg-border" />;
+const Divider = () => <div className="h-6 sm:h-10 w-px bg-border" />;

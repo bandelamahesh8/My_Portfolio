@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useMotionValue, animate } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import './Projects.css'
 import { SlideIn } from './Animations'
 import ProjectModal from './ProjectModal'
@@ -10,7 +11,7 @@ import conceptImg from '../Project_banners/Concept.png'
 import ecommerceImg from '../Project_banners/Ecommerce.png'
 import authImg from '../Project_banners/Authentication.png'
 
-const CARD_WIDTH = 400 // Must match CSS min-width
+const CARD_WIDTH = 320 // Must match CSS min-width
 const GAP = 32
 
 const ProjectCard = ({ project, isActive, onClick }) => {
@@ -54,28 +55,10 @@ const Projects = ({ isCaseStudiesGrid, count = 4, carousel = false }) => {
     const [cardWidth, setCardWidth] = useState(400)
     const [containerWidth, setContainerWidth] = useState(0)
     const [selectedProject, setSelectedProject] = useState(null)
+    const [pitch, setPitch] = useState(0)
     const carouselRef = useRef(null)
     const x = useMotionValue(0)
 
-    useEffect(() => {
-        const updateDimensions = () => {
-            if (carousel && carouselRef.current) {
-                setContainerWidth(carouselRef.current.offsetWidth)
-                
-                // Measure card width from the first item
-                const item = carouselRef.current.querySelector('.carousel-item')
-                if (item) {
-                    setCardWidth(item.offsetWidth)
-                }
-            }
-        }
-        
-        updateDimensions()
-        window.addEventListener('resize', updateDimensions)
-        return () => window.removeEventListener('resize', updateDimensions)
-    }, [carousel])
-
-    // Center the active item
     const projects = [
         {
             id: 'project-1',
@@ -134,6 +117,39 @@ const Projects = ({ isCaseStudiesGrid, count = 4, carousel = false }) => {
         }
     ]
 
+    useEffect(() => {
+        const updateDimensions = () => {
+            if (carousel && carouselRef.current) {
+                setContainerWidth(carouselRef.current.offsetWidth)
+                
+                const items = carouselRef.current.querySelectorAll('.carousel-item')
+                if (items.length > 0) {
+                    const firstWidth = items[0].offsetWidth
+                    setCardWidth(firstWidth)
+
+                    if (items.length > 1) {
+                         // Measure exact distance from center of item 0 to center of item 1
+                         // Or simply left offset diff
+                         const p = items[1].offsetLeft - items[0].offsetLeft
+                         if (p > 0) setPitch(p)
+                         else setPitch(firstWidth + GAP) // Fallback
+                    } else {
+                        setPitch(firstWidth + GAP)
+                    }
+                }
+            }
+        }
+        
+        updateDimensions()
+        window.addEventListener('resize', updateDimensions)
+        // Re-check after a brief delay to ensure layout stable?
+        setTimeout(updateDimensions, 100)
+        
+        return () => window.removeEventListener('resize', updateDimensions)
+    }, [carousel, projects.length]) // Added length dependency
+
+    // Center the active item
+
     const handleDragEnd = (event, info) => {
         const offset = info.offset.x
         const velocity = info.velocity.x
@@ -146,14 +162,20 @@ const Projects = ({ isCaseStudiesGrid, count = 4, carousel = false }) => {
     }
 
     // Effect to update X when    // Center the active item
+    // Effect to update X when    // Center the active item
     useEffect(() => {
         if (carousel && containerWidth > 0 && cardWidth > 0) {
+            // Use dynamic pitch if available, else fallback
+            const effectivePitch = pitch > 0 ? pitch : (cardWidth + GAP)
+            
             // Calculate center position using dynamic cardWidth
-            const centerOffset = containerWidth / 2 - cardWidth / 2
-            const newX = -(activeIndex * (cardWidth + GAP)) + centerOffset
+            const centerOffset = containerWidth / 2 - cardWidth / 2  /* Critique Fix: Shift right slightly (20px) */
+            // Note: centerOffset centers the ITEM.
+            // But we need to shift LEFT by (index * pitch).
+            const newX = -(activeIndex * effectivePitch) + centerOffset
             animate(x, newX, { type: "spring", stiffness: 300, damping: 30 })
         }
-    }, [activeIndex, containerWidth, cardWidth, carousel, x])
+    }, [activeIndex, containerWidth, cardWidth, pitch, carousel, x])
 
     // Wheel (trackpad) support
     const isScrollingRef = useRef(false)
@@ -194,7 +216,24 @@ const Projects = ({ isCaseStudiesGrid, count = 4, carousel = false }) => {
                 <div 
                     className="carousel-container" 
                     ref={carouselRef}
+                    style={{ position: 'relative' }} /* Ensure relative for arrows */
                 >
+                    <button 
+                        className="carousel-nav-btn prev"
+                        onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
+                        aria-label="Previous project"
+                    >
+                        <ChevronLeft />
+                    </button>
+
+                    <button 
+                        className="carousel-nav-btn next"
+                        onClick={() => setActiveIndex((prev) => Math.min(prev + 1, projects.length - 1))}
+                        aria-label="Next project"
+                    >
+                        <ChevronRight />
+                    </button>
+
                     <motion.div 
                         className="inner-carousel focused"
                         style={{ x }}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import DownloadButton from './ui/button-download'
 import './Header.css'
@@ -11,6 +12,7 @@ const Header = () => {
     const [activeSection, setActiveSection] = useState('')
     const [downloadStatus, setDownloadStatus] = useState('idle')
     const [progress, setProgress] = useState(0)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     useEffect(() => {
         const sections = ['about', 'projects', 'certificates', 'education', 'contact']
@@ -36,10 +38,13 @@ const Header = () => {
 
 
         let ticking = false
+        const getHeaderOffset = () => (window.innerWidth < 768 ? 64 : 100)
+
         const onScroll = () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    const scrollPosition = window.scrollY + 100
+                    const headerOffset = getHeaderOffset()
+                    const scrollPosition = window.scrollY + headerOffset
                     let currentSection = ''
                     
                     for (const section of sections) {
@@ -67,14 +72,17 @@ const Header = () => {
         }
     }, [])
 
+    const getHeaderOffset = () => (window.innerWidth < 768 ? 64 : 100)
+
     const scrollToSection = (id) => {
         const element = document.getElementById(id)
         if (element) {
             window.scrollTo({
-                top: element.offsetTop - 80, // Adjust for header height
+                top: element.offsetTop - getHeaderOffset(),
                 behavior: 'smooth'
             })
             setActiveSection(id)
+            setIsMobileMenuOpen(false)
         }
     }
 
@@ -114,50 +122,105 @@ const Header = () => {
     }
 
     return (
-        <motion.nav
-            className="navbar"
-            initial={{ y: -80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.1,
-            }}
-        >
-            <div className="nav-left">
-                <Link to="/" className="logo-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                    <motion.span 
-                        className="logo"
-                        layoutId="site-logo"
-                        style={{ color: activeSection === '' ? '#ff5252' : '#ffffff' }}
-                    >
-                        Bandela Mahesh<Logo className="w-4 h-4 ml-1.5 inline-block align-baseline" color={activeSection === '' ? '#ff5252' : '#ff5252'} />
-                    </motion.span>
-                </Link>
-            </div>
+        <>
+            <motion.nav
+                className="navbar"
+                initial={{ y: -80, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: 0.1,
+                }}
+            >
+                <div className="nav-left">
+                    <Link to="/" className="logo-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                        <motion.span 
+                            className="logo"
+                            layoutId="site-logo"
+                            style={{ color: activeSection === '' ? '#ff5252' : '#ffffff' }}
+                        >
+                            Bandela Mahesh<Logo className="w-4 h-4 ml-1.5 inline-block align-baseline" color={activeSection === '' ? '#ff5252' : '#ff5252'} />
+                        </motion.span>
+                    </Link>
+                </div>
 
-            <div className="nav-center">
-                {['ABOUT', 'PROJECTS', 'CERTIFICATES', 'EDUCATION', 'CONTACT'].map(item => (
+                <div className="nav-center">
+                    {['ABOUT', 'PROJECTS', 'CERTIFICATES', 'EDUCATION', 'CONTACT'].map(item => (
+                        <button 
+                            key={item} 
+                            onClick={() => scrollToSection(item.toLowerCase())}
+                            className={`nav-link ${activeSection === item.toLowerCase() ? 'active' : ''}`}
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="nav-right-group">
+                    <div className="cta-wrapper desktop-only">
+                        <DownloadButton 
+                            downloadStatus={downloadStatus}
+                            progress={progress}
+                            onClick={handleDownload}
+                            className="cta"
+                        />
+                    </div>
+                    
                     <button 
-                        key={item} 
-                        onClick={() => scrollToSection(item.toLowerCase())}
-                        className={`nav-link ${activeSection === item.toLowerCase() ? 'active' : ''}`}
+                        className="mobile-menu-btn"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle menu"
                     >
-                        {item}
+                        {isMobileMenuOpen ? <X size={24} color="#fff" /> : <Menu size={24} color="#fff" />}
                     </button>
-                ))}
-            </div>
+                </div>
+            </motion.nav>
 
-            <div className="cta-wrapper">
-                <DownloadButton 
-                    downloadStatus={downloadStatus}
-                    progress={progress}
-                    onClick={handleDownload}
-                    className="cta"
-                />
-            </div>
-        </motion.nav>
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        className="mobile-menu-overlay"
+                        initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <div className="mobile-menu-container">
+                             {['ABOUT', 'PROJECTS', 'CERTIFICATES', 'EDUCATION', 'CONTACT'].map((item, index) => (
+                                <motion.button
+                                    key={item}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 + index * 0.05 }}
+                                    onClick={() => scrollToSection(item.toLowerCase())}
+                                    className={`mobile-nav-link ${activeSection === item.toLowerCase() ? 'active' : ''}`}
+                                >
+                                    {item}
+                                    {activeSection === item.toLowerCase() && <span className="active-dot">●</span>}
+                                </motion.button>
+                            ))}
+                            
+                            <motion.div 
+                                className="mobile-menu-cta"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                            >
+                                <DownloadButton 
+                                    downloadStatus={downloadStatus}
+                                    progress={progress}
+                                    onClick={handleDownload}
+                                    className="cta mobile-cta"
+                                />
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     )
 }
 
 export default Header
+

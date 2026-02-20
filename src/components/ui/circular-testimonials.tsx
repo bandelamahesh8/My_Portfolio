@@ -39,11 +39,11 @@ interface CircularTestimonialsProps {
 function calculateGap(width: number) {
   const minWidth = 1024;
   const maxWidth = 1456;
-  const minGap = 60;
-  const maxGap = 86;
+  const minGap = 50; // Reduced from 60
+  const maxGap = 70; // Reduced from 86
   if (width <= minWidth) return minGap;
   if (width >= maxWidth)
-    return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
+    return Math.max(minGap, maxGap + 0.04 * (width - maxWidth));
   return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
 }
 
@@ -267,7 +267,7 @@ export const CircularTestimonials = ({
         }
         .testimonial-grid {
           display: grid;
-          gap: 4rem;
+          gap: 0rem; /* Reduced further to move title closer to images */
           align-items: center;
         }
         .image-container {
@@ -293,7 +293,7 @@ export const CircularTestimonials = ({
           margin-bottom: 0.25rem;
         }
         .designation {
-          margin-bottom: 2rem;
+          margin-bottom: 0.5rem; /* Reduced from 2rem */
         }
         .quote {
           line-height: 1.75;
@@ -301,7 +301,7 @@ export const CircularTestimonials = ({
         .arrow-buttons {
           display: inline-flex;
           gap: 1.5rem;
-          margin-top: 3rem;
+          margin-top: 2.5rem; /* Restored closer to original (3rem) to isolate change */
         }
         .arrow-button {
           width: 3.5rem;

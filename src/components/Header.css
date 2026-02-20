@@ -1,13 +1,13 @@
 .navbar {
   position: fixed;
   top: 22px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 94%;
-  max-width: 1640px;
+  inset-inline: 24px;              /* Fixed safe margin */
+  max-width: calc(1640px + 48px);  /* Deterministic max-width */
   height: 64px;
-  padding: 0 36px;
+  margin-inline: auto;
+  padding-inline: 36px;
+  padding-left: calc(36px + env(safe-area-inset-left));
+  padding-right: calc(36px + env(safe-area-inset-right));
   border-radius: 999px;
   z-index: 1000;
 
@@ -15,20 +15,16 @@
   align-items: center;
   justify-content: space-between;
 
-  /* Translucent Glass Effect */
-  background: rgba(10, 10, 12, 0.05); /* Extremely low opacity */
-  
+  background: rgba(10, 10, 12, 0.05);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-  /* Subtle border */
   border: 1px solid rgba(255, 255, 255, 0.08);
 
   box-shadow:
     0 20px 40px -10px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
-  /* Phase 6: Nav Bar Final Restraint */
   opacity: 0.85;
   will-change: transform; /* Pre-promote to own compositing layer */
   transition: opacity 0.3s ease;
@@ -230,4 +226,127 @@
 .cta-wrapper {
   text-decoration: none;
   display: flex;
+}
+
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 2000; /* Increased z-index */
+    position: relative; /* Ensure z-index works */
+    color: white;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 72px;
+  inset-inline: 16px;   /* replaces % width */
+  max-width: calc(100% - 32px);
+
+  background: rgba(10, 10, 12, 0.95);
+  backdrop-filter: blur(20px);
+
+  border-radius: 24px;
+  padding: 32px;
+  z-index: 999;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .navbar {
+    top: 22px; /* Critique Fix: More air above (16px -> 22px) */
+    inset-inline: 12px;
+    max-width: calc(100% - 24px);
+    height: 56px;
+    padding-inline: 20px;
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+    border-radius: 20px; /* Critique Fix: Designed shape, not just pill */
+
+    /* Reduced visual dominance */
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 20px 40px -10px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    display: flex;
+    pointer-events: auto;
+  }
+
+  /* Tone down glow */
+  .navbar::before {
+    opacity: 0.6;
+  }
+  
+  /* .nav-left, .nav-right-group pointer-events auto redundant but harmless */
+
+  .nav-center {
+    display: none;
+    position: static;
+    transform: none;
+  }
+  
+  .desktop-only {
+      display: none;
+  }
+
+  .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  /* .mobile-menu-overlay display block removed */
+
+  .mobile-menu-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+  }
+
+  .mobile-nav-link {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  }
+
+  .mobile-nav-link.active {
+      color: #ff3333;
+  }
+
+  .active-dot {
+      font-size: 8px;
+      color: #ff3333;
+  }
+
+  .logo {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem; /* Increased from 0.85rem */
+  }
 }

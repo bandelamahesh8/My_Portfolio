@@ -1,99 +1,51 @@
 /* Articles.css */
 .articles-section {
     position: relative;
-    padding: 100px 0;
-    min-height: 80vh;
-}
-
-.articles-header {
-    text-align: center;
-    margin-bottom: 80px;
+    padding: 0;
+    background: #030303;
 }
 
 .articles-header .eyebrow {
-    font-size: 18px;
+    font-size: 11px;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.3em;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-    display: inline-block;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.4em;
+    margin-bottom: 20px;
 }
 
 .articles-header .section-title {
-    font-size: 84px;
+    font-size: clamp(32px, 8vw, 84px);
     font-weight: 800;
     color: #ffffff;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
     margin: 0;
-    text-transform: capitalize;
-    background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.5));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
 }
 
-.articles-header .section-title .plus {
-    color: #ff3333;
-    -webkit-text-fill-color: #ff3333;
+@media (max-width: 600px) {
+    .articles-header .section-title {
+        font-size: 32px;
+    }
+}
+
+.article-card-wrapper {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.article-card-wrapper:hover {
+    transform: translateY(-8px);
+}
+
+.article-card-inner {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.article-icon {
+    line-height: 1;
 }
 
 @media (max-width: 768px) {
-    .articles-header .section-title {
-        font-size: 56px;
+    .articles-grid {
+        padding: 0 1.5rem;
     }
-    
-    .articles-header .eyebrow {
-        font-size: 14px;
-        margin-bottom: 16px;
-    }
-}
-
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-.article-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-}
-
-.article-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.article-icon-wrapper {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    background: rgba(255, 51, 51, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff3333;
-    font-size: 24px;
-    margin-bottom: 2rem;
-}
-
-.article-card-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.article-card-excerpt {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.6;
-    margin-bottom: 2rem;
 }

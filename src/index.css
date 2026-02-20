@@ -61,7 +61,26 @@
   }
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Original Styles */
+:root {
+  --vw: 100%;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+.full-width,
+.w-screen,
+[class*="w-screen"] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 html, body {
     width: 100%;
     max-width: 100%;
@@ -70,6 +89,12 @@ html, body {
     padding: 0;
     overscroll-behavior: none; /* Prevent bounce on Mac/iOS */
     scroll-behavior: auto; /* Let Lenis handle smooth scroll to avoid conflicts */
+}
+
+#root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {

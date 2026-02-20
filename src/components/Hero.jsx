@@ -1,4 +1,5 @@
 // hero.jsx (Updated - REMOVE rays, ADD static grid)
+import { useState } from 'react'
 
 import { motion } from 'framer-motion'
 import { SlideIn, ScaleIn, BlurIn } from './Animations'
@@ -8,6 +9,7 @@ import maheshImg from '../assets/Profile1.png' // Updated to Profile1.png
 import './Hero.css'  // Make sure this is the only hero CSS
 
 const Hero = () => {
+  const [isExpanded, setIsExpanded] = useState(false)
   return (
     <div className="hero">
       {/* STATIC GRID - Middle layer */}
@@ -53,10 +55,55 @@ const Hero = () => {
 
         
         <SlideIn direction="left" delay={0.6}>
-        <p className="desc">
-          Hi! I’m Mahesh — a Product Designer & Developer crafting cinematic, performance-driven web experiences. I build full-stack, AI-powered, real-time systems with a sharp focus on motion, 3D depth, clean architecture, and production-grade performance.
-        </p>
-
+        <div className="desc-wrapper">
+          <p className="desc">
+            Hi! I’m Mahesh — a Product Designer & Developer crafting cinematic, performance-driven web experiences. 
+            {!isExpanded && (
+              <>
+                <span className="dots">... </span>
+                <button 
+                  onClick={() => setIsExpanded(true)} 
+                  className="read-more-btn"
+                  style={{ 
+                    background: 'none', 
+                    border: 'none', 
+                    color: 'rgba(255, 255, 255, 0.6)', 
+                    cursor: 'pointer', 
+                    fontSize: 'inherit', 
+                    fontWeight: 500,
+                    textDecoration: 'underline',
+                    padding: 0,
+                    marginLeft: '4px'
+                  }}
+                >
+                  Read more
+                </button>
+              </>
+            )}
+            {isExpanded && (
+              <>
+                <span> I build full-stack, AI-powered systems with a sharp focus on motion, 3D depth, and production-grade performance.</span>
+                <button 
+                  onClick={() => setIsExpanded(false)} 
+                  className="read-less-btn"
+                  style={{ 
+                    background: 'none', 
+                    border: 'none', 
+                    color: 'rgba(255, 255, 255, 0.6)', 
+                    cursor: 'pointer', 
+                    fontSize: 'inherit', 
+                    fontWeight: 500,
+                    textDecoration: 'underline',
+                    padding: 0,
+                    marginLeft: '4px'
+                  }}
+                >
+                  Read less
+                </button>
+              </>
+            )}
+          </p>
+        </div>
         </SlideIn>
 
         <SlideIn direction="up" delay={0.8} viewportMargin="0px">

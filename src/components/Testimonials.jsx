@@ -27,16 +27,6 @@ const Skills = () => {
             ]
         },
         {
-            title: "Backend & APIs",
-            icon: <Server size={24} className="text-[#ff3333]" />,
-            skills: [
-                { name: "Django", icon: <SiDjango size={16} /> },
-                { name: "Flask", icon: <SiFlask size={16} /> },
-                { name: "Node.js", icon: <SiNodedotjs size={16} /> },
-                { name: "REST APIs", icon: <Zap size={16} /> }
-            ]
-        },
-        {
             title: "Frontend",
             icon: <Layout size={24} className="text-[#ff3333]" />,
             skills: [
@@ -47,9 +37,12 @@ const Skills = () => {
             ]
         },
         {
-            title: "Databases",
-            icon: <Database size={24} className="text-[#ff3333]" />,
+            title: "Backend & Databases",
+            icon: <Server size={24} className="text-[#ff3333]" />,
             skills: [
+                { name: "Django", icon: <SiDjango size={16} /> },
+                { name: "Flask", icon: <SiFlask size={16} /> },
+                { name: "Node.js", icon: <SiNodedotjs size={16} /> },
                 { name: "MongoDB", icon: <SiMongodb size={16} /> },
                 { name: "Supabase", icon: <SiSupabase size={16} /> },
                 { name: "MySQL", icon: <SiMysql size={16} /> }

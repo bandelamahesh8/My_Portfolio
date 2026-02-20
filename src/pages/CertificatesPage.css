@@ -117,12 +117,34 @@
 
 @media (max-width: 768px) {
     .certificates-content {
-        padding: 40px 40px 80px;
+        padding: 40px 20px 80px;
     }
     .certificates-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
     .cta-title {
         font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .certificates-content {
+        padding: 24px 12px 60px;
+    }
+    .certificate-image-wrapper {
+        border-radius: 12px;
+    }
+    .certificate-item-title {
+        font-size: 13px;
+    }
+    .cta-title {
+        font-size: 24px;
+    }
+    .cta-text {
+        font-size: 15px;
+    }
+    .certificates-footer-cta {
+        padding: 60px 20px;
     }
 }

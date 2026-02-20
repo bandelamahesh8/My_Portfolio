@@ -145,7 +145,26 @@
 
 @media (max-width: 1024px) {
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-grid {
+        gap: 16px;
+    }
+    .work-homepage-header .title {
+        font-size: 48px;
+    }
+    .work-image-wrapper {
+        border-radius: 16px;
+        margin-bottom: 12px;
+    }
+    .work-info .work-title {
+        font-size: 16px;
+    }
+    .work-meta {
+        font-size: 12px;
     }
 }
 
@@ -169,14 +188,14 @@
 }
 
 .carousel-item {
-    min-width: 400px; /* Must match JS CARD_WIDTH */
+    min-width: 320px; /* Reduced from 400px */
     flex-shrink: 0;
     /* transition handled by Framer Motion in JS */
 }
 
 @media (max-width: 768px) {
     .carousel-item {
-        min-width: 300px; /* Update JS if responsive logic is needed */
+        min-width: 260px; /* Reduced from 300px */
     }
 }
 
@@ -188,4 +207,110 @@
 .carousel-item .work-card:hover {
     /* Disable CSS hover effect in carousel */
     transform: none;
+}
+
+@media (max-width: 768px) {
+    .work-homepage-container {
+        padding: 0 20px;
+    }
+    .work-homepage-header {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .work-homepage-header .title {
+        font-size: 56px;
+    }
+    .work-homepage-section {
+        padding: 40px 0;
+    }
+    .work-image-wrapper {
+        border-radius: 12px; /* Smaller radius for mobile */
+    }
+    .work-info .work-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-homepage-container {
+        padding: 0 12px;
+    }
+    .work-homepage-header .title {
+        font-size: 32px;
+    }
+    .work-homepage-header .eyebrow {
+        font-size: 9px;
+    }
+    .work-image-wrapper {
+        border-radius: 12px;
+        aspect-ratio: 4/5;
+        margin-bottom: 12px;
+    }
+    .work-info .work-title {
+        font-size: 14px;
+    }
+    .work-meta {
+        font-size: 11px;
+    }
+    .featured-tag, .work-date-badge {
+        font-size: 9px;
+        padding: 4px 8px;
+        top: 12px;
+    }
+    .featured-tag { left: 12px; }
+    .work-date-badge { right: 12px; }
+}
+
+/* Navigation Arrows */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.carousel-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn.prev {
+    left: 20px;
+}
+
+.carousel-nav-btn.next {
+    right: 20px;
+}
+
+.carousel-nav-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .carousel-nav-btn.prev {
+        left: 10px;
+    }
+    .carousel-nav-btn.next {
+        right: 10px;
+    }
 }

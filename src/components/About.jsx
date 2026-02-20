@@ -1,4 +1,5 @@
 import './About.css'
+import { useState } from 'react'
 import profileImg from '../assets/Profile.png'
 import Logo from './Logo'
 import { Reveal } from './Animations'
@@ -6,6 +7,7 @@ import { EtheralShadow } from './ui/etheral-shadow'
 import LazyBackground from './LazyBackground'
 
 const About = () => {
+    const [isExpanded, setIsExpanded] = useState(false)
     return (
         <section className="about-section">
             <LazyBackground className="absolute inset-0 z-0">
@@ -43,34 +45,76 @@ const About = () => {
                         </Reveal>
                         
                         <div className="about-text">
-                        <Reveal delay={0.4}>
+                          <Reveal delay={0.4}>
                                 <p>
                                 I’m <strong>Mahesh (Bandela Mahesh)</strong>, a <strong>Product Designer & Developer</strong> 
                                 building cinematic, high-performance web systems where advanced UI engineering, motion design, 
                                 and scalable backend architecture intersect.
-                                  </p>
+                                </p>
+                                {!isExpanded && (
+                                    <button 
+                                        onClick={() => setIsExpanded(true)}
+                                        className="read-more-btn"
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            color: 'rgba(255, 255, 255, 0.6)',
+                                            cursor: 'pointer',
+                                            fontSize: 'inherit',
+                                            fontWeight: 500,
+                                            textDecoration: 'underline',
+                                            padding: '8px 0',
+                                            display: 'inline-block'
+                                        }}
+                                    >
+                                        Read more
+                                    </button>
+                                )}
                           </Reveal>
-                          <Reveal delay={0.5}>
-                            <p>
-                            I design and build production-grade full-stack systems — turning complex design systems into 
-                            maintainable, secure, and performance-focused code that survives real-world scale.
-                            </p>
-                          </Reveal>
+                          
+                          {isExpanded && (
+                              <>
+                                <Reveal delay={0.5}>
+                                    <p>
+                                    I design and build production-grade full-stack systems — turning complex design systems into 
+                                    maintainable, secure, and performance-focused code that survives real-world scale.
+                                    </p>
+                                </Reveal>
 
-                          <Reveal delay={0.6}>
-                            <p>
-                            My work spans AI-driven platforms, advanced authentication, real-time systems, subscription 
-                            products, and immersive motion- and 3D-led interfaces.
-                            </p>
-                          </Reveal>
+                                <Reveal delay={0.6}>
+                                    <p>
+                                    My work spans AI-driven platforms, advanced authentication, real-time systems, subscription 
+                                    products, and immersive motion- and 3D-led interfaces.
+                                    </p>
+                                </Reveal>
 
-                          <Reveal delay={0.7}>
-                            <p>
-                            Currently pursuing B.Tech in Computer Science & Engineering at Lovely Professional University, 
-                            I focus on building systems that go beyond demos — intentional interfaces that perform under 
-                            real constraints.
-                            </p>
-                          </Reveal>
+                                <Reveal delay={0.7}>
+                                    <p>
+                                    Currently pursuing B.Tech in Computer Science & Engineering at Lovely Professional University, 
+                                    I focus on building systems that go beyond demos — intentional interfaces that perform under 
+                                    real constraints.
+                                    </p>
+                                </Reveal>
+
+                                <button 
+                                    onClick={() => setIsExpanded(false)}
+                                    className="read-less-btn"
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        color: 'rgba(255, 255, 255, 0.6)',
+                                        cursor: 'pointer',
+                                        fontSize: 'inherit',
+                                        fontWeight: 500,
+                                        textDecoration: 'underline',
+                                        padding: '8px 0',
+                                        display: 'inline-block'
+                                    }}
+                                >
+                                    Read less
+                                </button>
+                              </>
+                          )}
                     </div>
                 </div>
             </div>

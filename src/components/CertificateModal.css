@@ -19,14 +19,14 @@
 
 .cert-modal-card {
     width: 100%;
-    max-width: 900px;
+    max-width: 550px; /* Further reduced from 700px */
     background: #0a0a0b;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
+    border-radius: 16px;
     position: relative;
     pointer-events: auto;
     overflow: hidden;
-    max-height: 80vh;
+    max-height: 48vh; /* Further reduced from 55vh */
     height: auto;
     touch-action: none;
 }
@@ -99,14 +99,14 @@
 }
 
 .cert-modal-details {
-    padding: 32px;
+    padding: 16px; /* Further reduced from 24px */
     display: flex;
     flex-direction: column;
     overflow-y: auto;
 }
 
 .cert-modal-header {
-    margin-bottom: 32px;
+    margin-bottom: 16px; /* Reduced from 32px */
 }
 
 .cert-badge {
@@ -124,14 +124,14 @@
 }
 
 .cert-modal-title {
-    font-size: 32px;
+    font-size: 18px; /* Further reduced from 24px */
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     letter-spacing: -0.02em;
 }
 
 .cert-modal-org {
-    font-size: 16px;
+    font-size: 13px; /* Reduced from 16px */
     color: rgba(255, 255, 255, 0.4);
     font-weight: 600;
 }
@@ -140,7 +140,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px; /* Reduced from 24px */
 }
 
 .info-block {
@@ -164,13 +164,13 @@
 }
 
 .info-text {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 12px; /* Further reduced from 13px */
+    line-height: 1.4;
     color: rgba(255, 255, 255, 0.7);
 }
 
 .cert-modal-actions {
-    margin-top: 40px;
+    margin-top: 20px; /* Reduced from 40px */
 }
 
 .cert-btn.primary {
@@ -244,17 +244,51 @@
         grid-template-columns: 1fr;
     }
     .cert-modal-visual {
-        padding: 24px;
-        height: 300px;
+        padding: 20px;
+        height: 180px; /* Reduced from 300px */
         overflow: hidden;
     }
     .cert-modal-details {
-        padding: 32px;
+        padding: 20px; /* Reduced from 32px */
     }
     .cert-modal-title {
         font-size: 24px;
     }
     .nav-arrow {
         display: none !important;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .cert-modal-root {
+        padding: 10px;
+    }
+    .cert-modal-card {
+        border-radius: 16px;
+        max-height: 70vh; /* Reduced from 90vh */
+    }
+    .cert-modal-visual {
+        height: 150px; /* Reduced from 220px */
+        padding: 12px;
+    }
+    .cert-modal-details {
+        padding: 20px;
+    }
+    .cert-modal-title {
+        font-size: 16px; /* Reduced from 20px */
+    }
+    .cert-modal-close {
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+    }
+    .cert-badge {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+    .info-text {
+        font-size: 14px;
     }
 }
