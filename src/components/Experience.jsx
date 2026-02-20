@@ -4,7 +4,7 @@ import Logo from './Logo'
 import { Reveal, SlideIn } from './Animations'
 import { BackgroundBeams } from '@/components/ui/background-beams'
 import LazyBackground from './LazyBackground'
-import trainingImg from '../internship/training.jpg'
+import trainingImg from '../intern-assets/experience-training.jpg'
 import CertificateModal from './CertificateModal'
 
 const Experience = () => {
