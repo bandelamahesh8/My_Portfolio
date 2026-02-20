@@ -9,20 +9,19 @@ import CertificateModal from '../components/CertificateModal'
 import Logo from '../components/Logo'
 
 // Import all certificates
-// ... (imports as they were)
-import cert1 from '../Certificates/Advanced Schema Patterns and Antipatterns.png'
-import cert2 from '../Certificates/Build Generative Al Apps and Solutions with No-Code Tools.png'
-import cert3 from '../Certificates/ChatGPT-4_Prompt_Engineering_ChatGPT_Generative_Al_LLM.png'
-import cert4 from '../Certificates/Computational Theory Language Principle & Finite Automata Theory.png'
-import cert5 from '../Certificates/Computer Communications.png'
-import cert6 from '../Certificates/Digital SystemsFrom Logic Gates to Processors.png'
-import cert7 from '../Certificates/Fundamentals of Data Transformation.png'
-import cert8 from '../Certificates/Introduction to Hardware and Operating Systems.png'
-import cert9 from '../Certificates/Legacy Responsive Web Design V8.png'
-import cert10 from '../Certificates/Master Generative Al & Generative Al tools (ChatGPT & more).png'
-import cert11 from '../Certificates/Packet Switching Networks and Algorithms.png'
-import cert12 from '../Certificates/Query Optimization.png'
-import cert13 from '../Certificates/The Bits and Bytes of Computer Networking.png'
+import cert1 from '../certificates/schema-patterns.png'
+import cert2 from '../certificates/no-code-ai-apps.png'
+import cert3 from '../certificates/chatgpt-prompt-engineering.png'
+import cert4 from '../certificates/computational-theory.png'
+import cert5 from '../certificates/computer-communications.png'
+import cert6 from '../certificates/digital-systems.png'
+import cert7 from '../certificates/data-transformation.png'
+import cert8 from '../certificates/hardware-os.png'
+import cert9 from '../certificates/responsive-web-design.png'
+import cert10 from '../certificates/generative-ai-mastery.png'
+import cert11 from '../certificates/packet-switching.png'
+import cert12 from '../certificates/query-optimization.png'
+import cert13 from '../certificates/bits-bytes-networking.png'
 
 const CertificatesPage = () => {
     const [selectedCert, setSelectedCert] = useState(null)
