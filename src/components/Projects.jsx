@@ -7,7 +7,7 @@ import ProjectModal from './ProjectModal'
 
 import cospiraImg from '../Project_banners/Cospira.png'
 import portfolioImg from '../Project_banners/Portfolio.png'
-import conceptImg from '../Project_banners/Concept.png'
+
 import ecommerceImg from '../Project_banners/Ecommerce.png'
 import authImg from '../Project_banners/Authentication.png'
 
@@ -50,7 +50,7 @@ const ProjectCard = ({ project, isActive, onClick }) => {
     )
 }
 
-const Projects = ({ isCaseStudiesGrid, count = 4, carousel = false }) => {
+const Projects = ({ isCaseStudiesGrid, carousel = false }) => {
     const [activeIndex, setActiveIndex] = useState(0)
     const [cardWidth, setCardWidth] = useState(400)
     const [containerWidth, setContainerWidth] = useState(0)
@@ -81,17 +81,6 @@ const Projects = ({ isCaseStudiesGrid, count = 4, carousel = false }) => {
             tech: ["React", "Three.js", "Framer Motion", "GLSL", "GSAP"],
             featured: false,
             image: portfolioImg
-        },
-        {
-            id: 'project-3',
-            title: "Concept Clarity",
-            desc: "AI-Powered Concept Generation Platform.",
-            longDesc: "An internal tool designed for rapid conceptualization and prototyping using generative AI. Streamlines the workflow from initial idea to visual mockups and interactive wireframes.",
-            startDate: "2024-07",
-            endDate: "2024-09",
-            tech: ["Next.js", "Python", "TailwindCSS", "Prisma", "AWS"],
-            featured: false,
-            image: conceptImg
         },
         {
             id: 'project-2',

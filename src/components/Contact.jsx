@@ -18,11 +18,13 @@ const ToolIcon = ({ icon, href }) => {
 };
 
 const Contact = () => {
-    const tools = [
-        <ToolIcon key="tool-1" icon={Instagram} href="https://www.instagram.com/maheshbandela8?igsh=MThwaXVwemltcnJscA==" />,
-        <ToolIcon key="tool-2" icon={Twitter} href="https://x.com/MaheshBandela88" />,
-        <ToolIcon key="tool-3" icon={Linkedin} href="https://www.linkedin.com/in/bandelamahesh88" />,
-    ];
+    const tools = (
+        <div className="flex gap-2.5 items-center">
+            <ToolIcon key="tool-1" icon={Instagram} href="https://www.instagram.com/maheshbandela8?igsh=MThwaXVwemltcnJscA==" />
+            <ToolIcon key="tool-2" icon={Twitter} href="https://x.com/MaheshBandela88" />
+            <ToolIcon key="tool-3" icon={Linkedin} href="https://www.linkedin.com/in/bandelamahesh88" />
+        </div>
+    );
 
     return (
         <section className="contact-section relative overflow-hidden" id="contact">
@@ -70,7 +72,7 @@ const Contact = () => {
                         </div>
 
                         <div className="contact-right">
-                            <Reveal delay={0.4}>
+                            <Reveal delay={0.4} width="100%">
                                 <div className="profile-card-wrapper">
                                     <FreelancerProfileCard
                                         name="Bandela Mahesh"
@@ -81,7 +83,7 @@ const Contact = () => {
                                         stat2="📈High Engagement"
                                         stat3="🧩Real-Time Systems"
                                         tools={tools}
-                                        className="mx-auto lg:ml-auto lg:mr-0 border border-white/10 bg-black/20 backdrop-blur-xl text-white"
+                                        className="w-full border border-white/10 bg-black/20 backdrop-blur-xl text-white"
                                         onGetInTouch={() => window.location.href = 'mailto:maheshbandela88@gmail.com'}
                                     />
                                 </div>

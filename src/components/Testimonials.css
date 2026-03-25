@@ -1,13 +1,11 @@
 .skills-section {
-    padding: 120px 0;
-    background: transparent;
+    padding: 160px 0; /* Increased padding to prevent nav overlap */
+    background: #000;
     width: 100%;
     display: flex;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
 
 .skills-container {
@@ -18,133 +16,102 @@
 
 .skills-header {
     text-align: center;
-    margin-bottom: 80px;
-}
-
-.skills-header .eyebrow {
-    font-size: 18px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.3em;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-    display: inline-block;
+    margin-bottom: 100px; /* More space below the title */
+    position: relative;
+    z-index: 10;
 }
 
 .skills-header .section-title {
     font-size: 84px;
     font-weight: 800;
     color: #ffffff;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
     margin: 0;
-    text-transform: capitalize;
-    background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.5));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
-}
-
-.skills-header .section-title .plus {
-    color: #ff3333;
-    -webkit-text-fill-color: #ff3333;
-}
-
-/* Base Grid Layout (Mobile/Tablet) */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Card Styling */
-.skill-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 28px;
-    padding: 28px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: background 0.5s ease, border-color 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
-    height: auto; /* Content-driven height for mobile */
-    position: relative;
-    overflow: hidden;
+    align-items: baseline;
+    justify-content: center;
 }
 
-/* Desktop Uniform Layout Override */
+.skills-header .heading-logo {
+    display: inline-block;
+    width: 0.3em;
+    height: 0.3em;
+    margin-left: 0.15em;
+    vertical-align: super;
+    transform: translateY(-0.6em);
+    filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.4));
+}
+
+/* Widened Symmetrical 2x2 Desktop Grid */
 @media (min-width: 1025px) {
     .skills-grid {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 26px;
-        max-width: 920px; /* Extremely tight grouping */
+        gap: 40px; /* Robust gap for horizontal separation */
+        max-width: 1260px; /* Widened to give "Backend" style width to all */
+        margin: 0 auto;
     }
     
     .skill-card {
-        height: 280px; /* Reduced uniform height */
-        background: rgba(8, 8, 8, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.03);
+        background: rgba(10, 10, 20, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 40px;
-        padding: 32px; /* Reduced padding */
-        gap: 24px; /* Reduced internal gap */
+        padding: 40px 52px 24px 52px; /* Tight bottom padding (24px) */
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
+        height: 310px; /* Tightened height to remove the bottom gap entirely */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 32px;
     }
 
-    .category-icon-wrapper {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-        background: rgba(255, 51, 51, 0.08);
-        border: 1px solid rgba(255, 51, 51, 0.3);
-        box-shadow: 0 0 30px rgba(255, 51, 51, 0.2); 
-    }
-
-    .category-title {
-        font-size: 28px;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        color: #fff;
-    }
-
-    /* Force 2nd column for tech containers */
-    .skills-grid > div:nth-child(1) .skills-list,
-    .skills-grid > div:nth-child(2) .skills-list,
-    .skills-grid > div:nth-child(3) .skills-list {
+    /* Standardized Internal List Layouts */
+    .skills-list {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px;
+        gap: 16px;
         width: 100%;
     }
 
-    /* Soft Skills - Smaller height override */
-    .skills-grid > div:nth-child(4) .skill-card {
-        width: 330px;
-        height: 280px; /* Matched to content height */
+    .area-backend .skills-list {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
-    /* Soft Skills - Row layout on desktop */
-    .skills-grid > div:nth-child(4) .skills-list {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 16px;
+    .category-title {
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
     }
 
     .skill-pill {
-        background: rgba(15, 15, 15, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.06);
         padding: 12px 20px;
-        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        height: min-content;
     }
 
     .skill-name {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
-        color: #fff;
+    }
+
+    .skill-icon {
+        height: 20px;
+        width: 20px;
+    }
+
+    /* Balanced icon scaling */
+    .category-icon-wrapper {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+    }
+
+    .category-icon-wrapper svg {
+        width: 26px;
+        height: 26px;
     }
 }
 

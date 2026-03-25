@@ -3,7 +3,7 @@ import './ContactPage.css'
 import { Reveal } from '../components/Animations'
 import { WorkBackground } from '../components/ui/work-background'
 import { FreelancerProfileCard } from '../components/ui/freelancer-profile-card'
-import { Instagram, Twitter, Linkedin, Mail, Calendar, Github } from 'lucide-react'
+import { Instagram, Twitter, Linkedin, Mail, Calendar, Github, Phone } from 'lucide-react'
 import profileImg from '../assets/Profile1.png'
 import Logo from '../components/Logo'
 
@@ -12,17 +12,15 @@ import PageTransition from '../components/PageTransition'
 const ToolIcon = ({ icon, href }) => {
     const Icon = icon;
     return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className="flex h-7 w-7 items-center justify-center rounded-md bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white transition-colors">
-            <Icon className="h-4 w-4" />
+        <a href={href} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white transition-all hover:-translate-y-1">
+            <Icon className="h-5 w-5" />
         </a>
     );
 };
 
 const ContactPage = () => {
     const tools = [
-        <ToolIcon key="tool-1" icon={Instagram} href="https://www.instagram.com/maheshbandela8?igsh=MThwaXVwemltcnJscA==" />,
-        <ToolIcon key="tool-2" icon={Twitter} href="https://x.com/MaheshBandela88" />,
-        <ToolIcon key="tool-3" icon={Linkedin} href="https://www.linkedin.com/in/bandelamahesh88" />,
+        <div key="tool-1" className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]" title="Online" />,
     ];
 
     return (
@@ -44,69 +42,42 @@ const ContactPage = () => {
 
                         <div className="contact-hero-grid">
                             <div className="contact-hero-left">
+                                <Reveal delay={0.2}>
+                                    <h3 className="cta-heading">Let's build the next big thing together.</h3>
+                                    <div className="action-buttons-grid">
+                                        <a href="mailto:maheshbandela88@gmail.com" className="contact-btn primary">
+                                            <Mail size={20} />
+                                            maheshbandela88@gmail.com
+                                        </a>
+                                        <a href="tel:+919177447240" className="contact-btn ghost">
+                                            <Phone size={20} />
+                                            +91-9177447240
+                                        </a>
+                                    </div>
+                                    <div className="social-links-row">
+                                        <ToolIcon icon={Github} href="https://github.com/bandelamahesh8" />
+                                        <ToolIcon icon={Linkedin} href="https://www.linkedin.com/in/bandelamahesh88" />
+                                    </div>
+                                </Reveal>
+                            </div>
+
+                            <div className="contact-hero-right">
                                 <div className="profile-card-wrapper">
                                     <Reveal>
                                         <FreelancerProfileCard
                                             name="Bandela Mahesh"
                                             title="Product Designer & Dev"
                                             avatarSrc={profileImg}
-                                            bannerSrc="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
-                                            stat1="⚡Performance-First"
-                                            stat2="📈High Engagement"
-                                            stat3="🧩Real-Time Systems"
+                                            bannerSrc="https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=800&q=80"
+                                            stat1="⚡ Performance-First"
+                                            stat2="📈 High Engagement"
+                                            stat3="🧩 Real-Time Systems"
                                             tools={tools}
-                                            className="border border-white/10 bg-black/20 backdrop-blur-xl text-white"
+                                            className="border border-white/10 bg-black/20 backdrop-blur-3xl text-white"
                                             onGetInTouch={() => {}}
                                         />
                                     </Reveal>
                                 </div>
-
-                                <div className="contact-info-footer">
-                                    <Reveal delay={0.2}>
-                                        <h3 className="cta-heading">Let's build the next big thing together.</h3>
-                                        <div className="action-buttons-grid">
-                                            <a href="mailto:maheshbandela88@gmail.com" className="contact-btn primary">
-                                                <Mail size={20} />
-                                                Send an email
-                                            </a>
-                                            <a href="#" className="contact-btn ghost">
-                                                <Calendar size={20} />
-                                                Book a call
-                                            </a>
-                                        </div>
-                                        <div className="social-links-row">
-                                            <a href="https://x.com/MaheshBandela88" className="social-link"><Twitter size={20} /></a>
-                                            <a href="https://github.com/bandelamahesh8" className="social-link"><Github size={20} /></a>
-                                            <a href="https://www.linkedin.com/in/bandelamahesh88" className="social-link"><Linkedin size={20} /></a>
-                                        </div>
-                                    </Reveal>
-                                </div>
-                            </div>
-
-                            <div className="contact-hero-right">
-                                <form className="contact-page-form">
-                                    <Reveal delay={0.3} width="100%">
-                                        <div className="form-group">
-                                            <label>Name</label>
-                                            <input type="text" placeholder="Your Name" />
-                                        </div>
-                                    </Reveal>
-                                    <Reveal delay={0.4} width="100%">
-                                        <div className="form-group">
-                                            <label>Email</label>
-                                            <input type="email" placeholder="your@email.com" />
-                                        </div>
-                                    </Reveal>
-                                    <Reveal delay={0.5} width="100%">
-                                        <div className="form-group">
-                                            <label>Message</label>
-                                            <textarea placeholder="How can I help you?" rows="6"></textarea>
-                                        </div>
-                                    </Reveal>
-                                    <Reveal delay={0.6}>
-                                        <button type="submit" className="submit-btn-full">Submit Message</button>
-                                    </Reveal>
-                                </form>
                             </div>
                         </div>
                     </div>

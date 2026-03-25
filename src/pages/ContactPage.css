@@ -9,9 +9,9 @@
 }
 
 .contact-page-content {
-    max-width: 1240px;
+    max-width: 1800px; /* Maximum expansion for full-screen impact */
     margin: 0 auto;
-    padding: 0 60px 100px;
+    padding: 0 40px 100px;
     position: relative;
     z-index: 10;
 }
@@ -56,9 +56,9 @@
 
 .contact-hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: flex-start;
+    grid-template-columns: 1fr 3fr; /* Give the card the overwhelming majority of space */
+    gap: 60px; 
+    align-items: center;
 }
 
 .contact-hero-left {
@@ -69,7 +69,7 @@
 
 .profile-card-wrapper {
     width: 100%;
-    transform: translateX(-40px); /* Nudge for artistic offset */
+    /* Removed translate nudge for a cleaner, wider profile */
 }
 
 .contact-info-footer {
