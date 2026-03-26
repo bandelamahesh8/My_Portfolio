@@ -81,7 +81,7 @@ export const FreelancerProfileCard = React.forwardRef<
 
     const handleFormSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      const mailtoUrl = `mailto:maheshbandela88@gmail.com?subject=Portfolio Message from ${formData.name}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+      const mailtoUrl = `mailto:maheshnaidu7648@gmail.com?subject=Portfolio Message from ${formData.name}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
       window.location.href = mailtoUrl;
     };
     // Standardize props for motion.div by removing incompatible event handlers

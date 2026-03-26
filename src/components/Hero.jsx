@@ -106,7 +106,7 @@ const Hero = () => {
             <a href="https://www.linkedin.com/in/bandelamahesh88" target="_blank" rel="noopener noreferrer" className="btn primary">
               <Linkedin size={18} className="mr-2" /> LinkedIn
             </a>
-            <a href="mailto:maheshbandela88@gmail.com" className="btn ghost">
+            <a href="mailto:maheshnaidu7648@gmail.com" className="btn ghost">
               <Mail size={18} className="mr-2" /> Mail
             </a>
           </div>

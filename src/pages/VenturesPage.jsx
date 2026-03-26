@@ -100,7 +100,7 @@ const VenturesPage = () => {
                                 <Reveal delay={0.4} width="100%">
                                     <div className="form-group">
                                         <label>Email</label>
-                                        <input type="email" placeholder="maheshbandela88@gmail.com" />
+                                        <input type="email" placeholder="maheshnaidu7648@gmail.com" />
                                     </div>
                                 </Reveal>
                                 <Reveal delay={0.5} width="100%">

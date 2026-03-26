@@ -45,9 +45,9 @@ const ContactPage = () => {
                                 <Reveal delay={0.2}>
                                     <h3 className="cta-heading">Let's build the next big thing together.</h3>
                                     <div className="action-buttons-grid">
-                                        <a href="mailto:maheshbandela88@gmail.com" className="contact-btn primary">
+                                        <a href="mailto:maheshnaidu7648@gmail.com" className="contact-btn primary">
                                             <Mail size={20} />
-                                            maheshbandela88@gmail.com
+                                            maheshnaidu7648@gmail.com
                                         </a>
                                         <a href="tel:+919177447240" className="contact-btn ghost">
                                             <Phone size={20} />
