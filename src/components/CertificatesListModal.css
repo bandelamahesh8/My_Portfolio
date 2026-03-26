@@ -27,9 +27,9 @@
     background: #0a0a0a;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    width: 85%;
-    max-width: 650px; /* Further reduced from 800px */
-    height: 48vh; /* Reduced from 55vh */
+    width: 90%;
+    max-width: 1100px; 
+    height: 80vh; 
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -46,7 +46,7 @@
 }
 
 .cert-list-header h2 {
-    font-size: 18px; /* Further reduced from 22px */
+    font-size: 24px; 
     font-weight: 700;
     color: #fff;
     margin: 0;
@@ -86,7 +86,7 @@
 
 .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Further reduced from 220px */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 12px; 
 }
 
@@ -159,7 +159,7 @@
 }
 
 .cert-name {
-    font-size: 12px; /* Further reduced from 14px */
+    font-size: 16px; 
     font-weight: 600;
     color: #fff;
     margin: 0 0 2px 0;
