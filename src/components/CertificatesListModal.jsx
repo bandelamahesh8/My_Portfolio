@@ -7,12 +7,19 @@ import './CertificatesListModal.css'
 const CertificatesListModal = ({ isOpen, onClose, certificates, onSelect }) => {
     useEffect(() => {
         if (isOpen) {
+            document.body.classList.add('modal-open');
             document.body.style.overflow = 'hidden'
+            // Some configurations might need this too
+            document.documentElement.style.overflow = 'hidden'
         } else {
+            document.body.classList.remove('modal-open');
             document.body.style.overflow = 'unset'
+            document.documentElement.style.overflow = 'unset'
         }
         return () => {
+            document.body.classList.remove('modal-open');
             document.body.style.overflow = 'unset'
+            document.documentElement.style.overflow = 'unset'
         }
     }, [isOpen])
 
@@ -48,7 +55,7 @@ const CertificatesListModal = ({ isOpen, onClose, certificates, onSelect }) => {
                                 </button>
                             </header>
                             
-                            <div className="cert-grid-scroll">
+                            <div className="cert-grid-scroll" data-lenis-prevent>
                                 <div className="cert-grid">
                                     {certificates.map((cert, index) => (
                                         <motion.div 
