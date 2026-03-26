@@ -1,3 +1,4 @@
+// src/App.jsx
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, LayoutGroup } from 'framer-motion'
