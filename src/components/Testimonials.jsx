@@ -1,6 +1,6 @@
 import './Testimonials.css'
 import Logo from './Logo'
-import { Code2, Database, Layout, Server, Sparkles, Brain, Zap } from 'lucide-react'
+import { Code2, Database, Layout, Server, Sparkles, Brain, Zap, Award, Trophy, Code, ExternalLink } from 'lucide-react'
 import { 
     SiPython, SiJavascript, SiCplusplus, SiC, SiPhp, 
     SiDjango, SiFlask, SiNodedotjs, 
@@ -11,8 +11,12 @@ import { FaJava } from 'react-icons/fa'
 import { Reveal } from './Animations'
 import { FallingPattern } from './ui/falling-pattern'
 import LazyBackground from './LazyBackground'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import hackathonCert from '../certificates/code-a-haunt.jpg'
 
 const Skills = () => {
+    const [activeTab, setActiveTab] = useState('skills')
     const skillsCategories = [
         {
             title: "Languages",
@@ -70,35 +74,95 @@ const Skills = () => {
             <div className="skills-container relative z-10">
                 <header className="skills-header">
                     <Reveal>
-                        {/* <p className="eyebrow">EXPERTISE</p> */}
-                        <h2 className="section-title">
-                            Skills & Technologies<Logo className="heading-logo" color="#ff3333" />
-                        </h2>
+                        <div className="section-tabs">
+                            <h2 
+                                className={`section-tab ${activeTab === 'skills' ? 'active' : ''}`}
+                                onMouseEnter={() => setActiveTab('skills')}
+                            >
+                                Skills & Technologies
+                            </h2>
+                            <span className="tab-separator">/</span>
+                            <h2 
+                                className={`section-tab-btn ${activeTab === 'achievements' ? 'active' : ''}`}
+                                onMouseEnter={() => setActiveTab('achievements')}
+                            >
+                                <Award size={24} className="tab-icon" />
+                                Achievements
+                                <Logo className="heading-logo" color="#ff3333" />
+                            </h2>
+                        </div>
                     </Reveal>
                 </header>
 
-                <div className="skills-grid">
-                    {skillsCategories.map((category, index) => (
-                        <Reveal key={index} delay={index * 0.1}>
-                            <div className={`skill-card area-${category.title.split(' ')[0].toLowerCase()}`}>
-                                <div className="skill-card-header">
-                                    <div className="category-icon-wrapper">
-                                        {category.icon}
-                                    </div>
-                                    <h3 className="category-title">{category.title}</h3>
-                                </div>
-                                <div className="skills-list">
-                                    {category.skills.map((skill, idx) => (
-                                        <div key={idx} className="skill-pill">
-                                            <span className="skill-icon">{skill.icon}</span>
-                                            <span className="skill-name">{skill.name}</span>
+                <AnimatePresence mode="wait">
+                    {activeTab === 'skills' ? (
+                        <motion.div 
+                            key="skills"
+                            className="skills-grid"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {skillsCategories.map((category, index) => (
+                                <Reveal key={index} delay={index * 0.1}>
+                                    <div className={`skill-card area-${category.title.split(' ')[0].toLowerCase()}`}>
+                                        <div className="skill-card-header">
+                                            <div className="category-icon-wrapper">
+                                                {category.icon}
+                                            </div>
+                                            <h3 className="category-title">{category.title}</h3>
                                         </div>
-                                    ))}
+                                        <div className="skills-list">
+                                            {category.skills.map((skill, idx) => (
+                                                <div key={idx} className="skill-pill">
+                                                    <span className="skill-icon">{skill.icon}</span>
+                                                    <span className="skill-name">{skill.name}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </Reveal>
+                            ))}
+                        </motion.div>
+                    ) : (
+                        <motion.div 
+                            key="achievements"
+                            className="achievements-view"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <div className="achievement-card">
+                                <div className="achievement-icon-wrapper main">
+                                    <Trophy size={48} />
+                                </div>
+                                <div className="achievement-details">
+                                    <h3>Code-A-Haunt Hackathon</h3>
+                                    <p>Participated in the 24-hour Code-A-Haunt hackathon organized by Coding Blocks LPU.</p>
+                                    <button 
+                                        className="achievement-btn"
+                                        onClick={() => window.open(hackathonCert, '_blank')}
+                                    >
+                                        View Certificate <ExternalLink size={16} />
+                                    </button>
                                 </div>
                             </div>
-                        </Reveal>
-                    ))}
-                </div>
+
+                            <div className="achievement-card">
+                                <div className="achievement-icon-wrapper main">
+                                    <Code size={48} />
+                                </div>
+                                <div className="achievement-details">
+                                    <h3>LeetCode Milestone</h3>
+                                    <p>Successfully completed 200+ coding problems on LeetCode, demonstrating strong algorithmic problem-solving skills.</p>
+                                    <div className="milestone-badge">200+ Solved</div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     )

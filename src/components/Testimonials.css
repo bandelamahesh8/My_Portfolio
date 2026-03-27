@@ -14,33 +14,172 @@
     padding: 0 40px;
 }
 
-.skills-header {
-    text-align: center;
-    margin-bottom: 100px; /* More space below the title */
-    position: relative;
-    z-index: 10;
+.section-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
-.skills-header .section-title {
-    font-size: 84px;
+.section-tab, .section-tab-btn {
+    font-size: 64px;
     font-weight: 800;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
     letter-spacing: -0.04em;
     line-height: 1;
-    margin: 0;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
 }
 
-.skills-header .heading-logo {
+.section-tab.active, .section-tab-btn.active {
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.section-tab:hover, .section-tab-btn:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tab-separator {
+    font-size: 48px;
+    color: rgba(255, 255, 255, 0.1);
+    font-weight: 200;
+}
+
+.tab-icon {
+    color: #ff3333;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.active .tab-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 51, 51, 0.5));
+}
+
+.achievements-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.achievement-card {
+    background: rgba(10, 10, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 40px;
+    padding: 60px;
+    backdrop-filter: blur(25px);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    transition: all 0.4s ease;
+    min-height: 310px;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 51, 51, 0.3);
+    background: rgba(20, 10, 10, 0.95);
+}
+
+.achievement-icon-wrapper.main {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 51, 51, 0.05);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff3333;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 51, 51, 0.1);
+}
+
+.achievement-details h3 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.achievement-details p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.achievement-btn {
+    background: #ff3333;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.achievement-btn:hover {
+    background: #e62e2e;
+    transform: translateX(5px);
+}
+
+.milestone-badge {
     display: inline-block;
-    width: 0.3em;
-    height: 0.3em;
-    margin-left: 0.15em;
-    vertical-align: super;
-    transform: translateY(-0.6em);
-    filter: drop-shadow(0 0 15px rgba(255, 51, 51, 0.4));
+    padding: 8px 20px;
+    background: rgba(255, 51, 51, 0.1);
+    border: 1px solid rgba(255, 51, 51, 0.2);
+    color: #ff3333;
+    border-radius: 100px;
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .section-tab, .section-tab-btn {
+        font-size: 48px;
+    }
+    .achievement-card {
+        padding: 40px;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-tabs {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .tab-separator {
+        display: none;
+    }
+    .achievements-view {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-tab, .section-tab-btn {
+        font-size: 28px;
+    }
+    .achievement-details h3 {
+        font-size: 20px;
+    }
+    .achievement-details p {
+        font-size: 14px;
+    }
 }
 
 /* Widened Symmetrical 2x2 Desktop Grid */
