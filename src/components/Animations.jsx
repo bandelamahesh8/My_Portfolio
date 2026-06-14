@@ -43,7 +43,7 @@ export const FadeIn = ({ children, delay = 0, duration = 0.5, className = "" }) 
     )
 }
 
-export const SlideIn = ({ children, direction = "up", delay = 0, duration = 0.5, className = "", viewportMargin = "-100px" }) => {
+export const SlideIn = ({ children, direction = "up", delay = 0, duration = 0.5, className = "", viewportMargin = "-100px", style = {}, ...props }) => {
     const variants = {
         hidden: { 
             opacity: 0, 
@@ -61,6 +61,8 @@ export const SlideIn = ({ children, direction = "up", delay = 0, duration = 0.5,
             variants={variants}
             transition={{ duration: duration, delay: delay, ease: [0.22, 1, 0.36, 1] }}
             className={className}
+            style={style}
+            {...props}
         >
             {children}
         </motion.div>

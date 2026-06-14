@@ -1,6 +1,6 @@
 import './Testimonials.css'
 import Logo from './Logo'
-import { Code2, Database, Layout, Server, Sparkles, Brain, Zap, Award, Trophy, Code, ExternalLink } from 'lucide-react'
+import { Code2, Database, Layout, Server, Sparkles, Brain, Zap, Award, Trophy, Code, ExternalLink, Cpu, GitBranch, Cloud } from 'lucide-react'
 import { 
     SiPython, SiJavascript, SiCplusplus, SiC, SiPhp, 
     SiDjango, SiFlask, SiNodedotjs, 
@@ -14,6 +14,7 @@ import LazyBackground from './LazyBackground'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import hackathonCert from '../certificates/code-a-haunt.jpg'
+import algoCert from '../certificates/ALGO_UNIVERSITY.png'
 
 const Skills = () => {
     const [activeTab, setActiveTab] = useState('skills')
@@ -28,6 +29,18 @@ const Skills = () => {
                 { name: "Java", icon: <FaJava size={24} color="#ED8B00" /> },
                 { name: "C", icon: <SiC size={24} color="#A8B9CC" /> },
                 { name: "PHP", icon: <SiPhp size={24} color="#777BB4" /> }
+            ]
+        },
+        {
+            title: "AI & Machine Learning",
+            icon: <Cpu size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "RAG", icon: <Database size={24} color="#339933" /> },
+                { name: "AI", icon: <Brain size={24} color="#61DAFB" /> },
+                { name: "Machine Learning", icon: <Server size={24} color="#00599C" /> },
+                { name: "VAD (Voice Activity)", icon: <Zap size={24} color="#F7DF1E" /> },
+                { name: "Prompt Engineering", icon: <Code size={24} color="#ffffff" /> },
+                { name: "LLMs & GenAI", icon: <Sparkles size={24} color="#ff3333" /> }
             ]
         },
         {
@@ -50,6 +63,17 @@ const Skills = () => {
                 { name: "MongoDB", icon: <SiMongodb size={24} color="#47A248" /> },
                 { name: "Supabase", icon: <SiSupabase size={24} color="#3ECF8E" /> },
                 { name: "MySQL", icon: <SiMysql size={24} color="#4479A1" /> }
+            ]
+        },
+        {
+            title: "Cloud & DevOps",
+            icon: <Cloud size={24} className="text-[#ff3333]" />,
+            skills: [
+                { name: "AWS", icon: <Cloud size={24} color="#FF9900" /> },
+                { name: "Docker", icon: <Server size={24} color="#2496ED" /> },
+                { name: "Git & GitHub", icon: <GitBranch size={24} color="#F05032" /> },
+                { name: "Oracle OCI", icon: <Database size={24} color="#F80000" /> },
+                { name: "Linux", icon: <Cpu size={24} color="#FCC624" /> }
             ]
         },
         {
@@ -147,6 +171,33 @@ const Skills = () => {
                                     >
                                         View Certificate <ExternalLink size={16} />
                                     </button>
+                                </div>
+                            </div>
+
+                            <div className="achievement-card">
+                                <div className="achievement-icon-wrapper main">
+                                    <Award size={48} />
+                                </div>
+                                <div className="achievement-details">
+                                    <h3>AlgoUniversity Dynamic Programming Camp</h3>
+                                    <p>Successfully completed the Dynamic Programming Camp under the mentorship of Codeforces Master Manas Kumar Verma, conquering Matrix Exponentiation and SQRT Decomposition.</p>
+                                    <button 
+                                        className="achievement-btn"
+                                        onClick={() => window.open(algoCert, '_blank')}
+                                    >
+                                        View Certificate <ExternalLink size={16} />
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="achievement-card">
+                                <div className="achievement-icon-wrapper main">
+                                    <Sparkles size={48} />
+                                </div>
+                                <div className="achievement-details">
+                                    <h3>Cospira Selected for LPU InnoTek 2026</h3>
+                                    <p>Cospira project was selected and presented at LPU InnoTek 2026, showcasing outstanding technical innovation, architectural execution, and potential impact.</p>
+                                    <div className="milestone-badge">Selected & Presented</div>
                                 </div>
                             </div>
 

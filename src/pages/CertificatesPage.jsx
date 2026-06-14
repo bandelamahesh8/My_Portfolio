@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import CertificatesHero from '../components/CertificatesHero'
 import './CertificatesPage.css'
-import { Reveal } from '../components/Animations'
+import { Reveal, SlideIn } from '../components/Animations'
 import ASMRStaticBackground from '../components/ui/asmr-static-background'
 import PageTransition from '../components/PageTransition'
 import CertificateModal from '../components/CertificateModal'
@@ -22,6 +22,9 @@ import cert10 from '../certificates/generative-ai-mastery.png'
 import cert11 from '../certificates/packet-switching.png'
 import cert12 from '../certificates/query-optimization.png'
 import cert13 from '../certificates/bits-bytes-networking.png'
+import certOracleAI from '../certificates/oracle-ai-foundations.png'
+import certOracleData from '../certificates/oracle-data-foundations.png'
+import certIndustry40 from '../certificates/industry-4-0.png'
 
 const CertificatesPage = () => {
     const [selectedCert, setSelectedCert] = useState(null)
@@ -39,7 +42,10 @@ const CertificatesPage = () => {
         { id: 10, img: cert10, title: "UI/UX Engineering", designation: "Interaction Design", quote: "States-of-the-art cinematic interfaces and user journeys." },
         { id: 11, img: cert11, title: "Mobile Development", designation: "React Native / iOS", quote: "High-end mobile experiences with native performance." },
         { id: 12, img: cert12, title: "Agile Project Management", designation: "Product Delivery", quote: "Modern workflow orchestration and team collaboration." },
-        { id: 13, img: cert13, title: "Quality Assurance", designation: "Software Testing", quote: "Robustness, performance benchmarking, and system reliability." }
+        { id: 13, img: cert13, title: "Quality Assurance", designation: "Software Testing", quote: "Robustness, performance benchmarking, and system reliability." },
+        { id: 14, img: certOracleAI, title: "OCI 2025 Certified AI Foundations Associate", designation: "Oracle University", quote: "Foundations of OCI AI services, machine learning concepts, and AI capabilities. Credential ID: 103472701OCI25AICFA." },
+        { id: 15, img: certOracleData, title: "Oracle Data Platform 2025 Certified Foundations Associate", designation: "Oracle University", quote: "Foundations of Oracle Data Platform services, databases, and analytics systems. Credential ID: 103472701OCI25DCFA." },
+        { id: 16, img: certIndustry40, title: "Introduction to Industry 4.0 and Industrial Internet of Things", designation: "NPTEL / IIT Kharagpur", quote: "Successfully completed the 12-week course with an elite consolidated score of 65% (Jan-Apr 2026). Credential ID: NPTEL26CS38S1250400470." }
     ]
 
     return (
@@ -56,7 +62,7 @@ const CertificatesPage = () => {
                 <div className="certificates-content relative z-10">
                     <div className="certificates-grid">
                         {certificates.map((cert, index) => (
-                            <Reveal key={cert.id} delay={index * 0.05}>
+                            <SlideIn key={cert.id} direction="up" delay={(index % 3) * 0.05} duration={0.6}>
                                 <div className="certificate-item" onClick={() => setSelectedCert(cert)}>
                                     <div className="certificate-image-wrapper">
                                         <img src={cert.img} alt={cert.title} className="certificate-img" />
@@ -67,7 +73,7 @@ const CertificatesPage = () => {
                                     </div>
                                     <h3 className="certificate-item-title">{cert.title}</h3>
                                 </div>
-                            </Reveal>
+                            </SlideIn>
                         ))}
                     </div>
                 </div>

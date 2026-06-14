@@ -199,7 +199,8 @@
         padding: 40px 52px 24px 52px; /* Tight bottom padding (24px) */
         backdrop-filter: blur(25px);
         -webkit-backdrop-filter: blur(25px);
-        height: 310px; /* Tightened height to remove the bottom gap entirely */
+        min-height: 310px; /* Symmetrical baseline height */
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
